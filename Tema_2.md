@@ -32,8 +32,7 @@ print(1.23)
 ## Выводы
 Git установлен
 
-## Лабораторная работа №2
-### Настройка.
+### Задание 2
 
 ``` git
 print(1823-486)
@@ -46,11 +45,17 @@ print(3+7.04+1+2.33)
 ## Выводы
 Были установлены имя и почта пользователя и был устновлен VSCode в качестве эдитора коммитов 
 
-## Лабораторная работа №3
-### Создание нового репозитория.
+### Задание 3
 
 ``` git
-git init
+print('Привет, Мир!')
+
+world = 'Мир'
+print(f"Привет, {world}!")
+
+one = 'Привет, '
+two = 'Мир!'
+print(one+two)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab3.jpg)
@@ -58,13 +63,17 @@ git init
 ## Выводы
 Создан пустой репозиторий
 
-## Лабораторная работа №4
-### Подготовка файлов.
+### Задание 4
 
 ``` git
-git add proba.txt
+one = 'Hello'
+print(bool(one))
 
-git status
+two = 142
+print(float(two))
+
+three = None
+print(str(three))
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab4.jpg)
@@ -72,17 +81,13 @@ git status
 ## Выводы
 Файл proba.txt подготовлен к коммиту
 
-## Лабораторная работа №5
-### Фиксация изменений.
+### Задание 5
 
 ``` git
-git commit -m "Первый коммит: начальная версия проекта"
-
-git log
-
-git log --oneline
-
-git log --graph
+one = input('one:')
+two = input('two:')
+three = input('three:')
+print(one, two, three)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab5.jpg)
@@ -91,19 +96,15 @@ git log --graph
 Для создания коммита используется команда git commit -m "комментарий". Историю коммитов можно просматривать разными способами, например: -n (отображает указанное количество), --oneline (выводит в одну строку) и --graph (показывает граф в виде дерева)
 
 
-## Лабораторная работа №6
-### Подключение к удалённому репозиторию
+### Задание 6
 
 ``` git
-git remote add origin https://github.com/WladCher/SoftwareEngineering
-
-git pull origin main
-
-git stash
-
-git stash apply
-
-git stash pop
+a = 12
+b = 5
+print('Возведение в степень:', a**b)
+print('Обычное деление:', a/b)
+print('Целочисленное деление:', a//b)
+print('Нахождение остатка от деления:', a%b)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab6.jpg)
@@ -112,17 +113,11 @@ git stash pop
 Командой git remote add локальный репозиторий можно привязать к удалённому, например на GitHub. А для удобного переключения между ветками при наличии несохранённых изменений их можно поместить в стэш с помощью соответствующей команды
 
 
-## Лабораторная работа №7
-### Ветвление
+### Задание 7
 
 ``` git
-git branch TestBranch
-
-git checkout TestBranch
-
-git switch TestBranch
-
-git merge faeture
+line = 'Hello!'
+print(line*6)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab7.jpg)
@@ -130,11 +125,11 @@ git merge faeture
 ## Выводы
 Создание веток выполняется через команду git branch, а для перехода к работе в конкретной ветке используется git checkout имя_ветки
 
-## Лабораторная работа №8
-### Фетч
+### Задание 8
 
 ``` git
-git fetch https://github.com/WladCher/SoftwareEngineering
+sentence = 'Hello World'
+print(sentence.count('o'))
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab8.jpg)
@@ -142,11 +137,10 @@ git fetch https://github.com/WladCher/SoftwareEngineering
 ## Выводы
 Команда git fetch выполняется перед слиянием или применением изменений и позволяет заранее проверить возможные конфликты, не внося их сразу в текущую ветку
 
-## Лабораторная работа №9
-### Удаление файлов, веток, локальных и удаленных репозиториев.
+### Задание 9
 
 ``` git
-git rm proba.txt
+print('Hello\nWorld!')
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab9.jpg)
@@ -155,13 +149,12 @@ git rm proba.txt
 Команда git rm --cached file.txt убирает файл только из индекса, а для удаления веток используются ключи: -d — безопасное удаление с проверкой, что ветка была слита, и -D — принудительное удаление без проверки
 
 
-## Лабораторная работа №10
-### Отслеживание изменений в коммитах
+### Задание 10
 
 ``` git
-git log
-
-git diff
+sentence = 'Hello World'
+print(sentence[1])
+print(sentence[:5])
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab10.jpg)
