@@ -1,94 +1,76 @@
-# Тема 1. Работа с Git
-Отчет по теме 1 выполнил:
-- Брейер Роман Алексеевич 
-- ИВТ-23-1
+# Тема 2. Базовые операции языка Python
+Отчет по Теме #2 выполнил:
+- Червяков Владислав Максимович 
+- ПИЭ-23-2
 
-| Задание | Лаб_раб |
-|---------|---------|
-| Задание 1 | + |
-| Задание 2 | + |
-| Задание 3 | + |
-| Задание 4 | + |
-| Задание 5 | + |
-| Задание 6 | + |
-| Задание 7 | + |
-| Задание 8 | + |
-| Задание 9 | + |
-| Задание 10 | + |
-| Задание 11 | + |
-| Задание 12 | + |
-| Задание 13 | + |
-| Задание 14 | + |
-| Задание 15 | + |
+| Задание | Лаб_раб | Сам_раб |
+| ------ | ------ | ------ |
+| Задание 1 | + | + |
+| Задание 2 | + | + |
+| Задание 3 | + | + |
+| Задание 4 | + | + |
+| Задание 5 | + | + |
+| Задание 6 | + | + |
+| Задание 7 | + | + |
+| Задание 8 | + | + |
+| Задание 9 | + | + |
+| Задание 10 | + | + |
 
 знак "+" - задание выполнено; знак "-" - задание не выполнено;
 
-## Лабораторная работа №1
-### Установка.
+## Лабораторная работа №2
+### Задание 1
 
 ``` git
-git --version
+print(123)
+print("123")
+print(1.23)
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_1.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-09-50.jpg)
 
 ## Выводы
-Git успешно установлен
+Git установлен
 
 ## Лабораторная работа №2
 ### Настройка.
 
 ``` git
-Roman@Computer MINGW64 ~ (master)
-$ git config --global user.name "notybre"
+git config --global user.name "WladCher"
 
-Roman@Computer MINGW64 ~ (master)
-$ git config --global user.email "romanbrejer3@gmail.com"
+git config --global user.email "maxvlad95@gmail.com"
 
-Roman@Computer MINGW64 ~ (master)
-$ git config --global core.editor "code --wait"
+git config --global core.editor "code --wait"
 
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_2.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-21-07.jpg)
 
 ## Выводы
-Установлено имя и почта пользователя, успешна пройдена проверка конфига, в качестве эдитора коммитов устновлен VSCode
+Были установлены имя и почта пользователя и был устновлен VSCode в качестве эдитора коммитов 
 
 ## Лабораторная работа №3
 ### Создание нового репозитория.
 
 ``` git
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering
-$ git init
-Initialized empty Git repository in A:/GIT/SoftwareEngineering/.git/
+git init
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_3.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-31-33.jpg)
 
 ## Выводы
-Создан пустой репозиторий по указанному пути
+Создан пустой репозиторий
 
 ## Лабораторная работа №4
 ### Подготовка файлов.
 
 ``` git
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git add proba.txt
+git add proba.txt
 
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git status
-On branch main
-
-No commits yet
-
-Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
-        new file:   proba.txt
-
+git status
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_4.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-35-34.jpg)
 
 ## Выводы
 Файл proba.txt подготовлен к коммиту
@@ -97,304 +79,188 @@ Changes to be committed:
 ### Фиксация изменений.
 
 ``` git
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git commit -m "Первый коммит"
-[main (root-commit) 7944bf3] Первый коммит
- 1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 proba.txt
+git commit -m "Первый коммит: начальная версия проекта"
 
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git log -n 5
-commit 7944bf3d79e9c00590d9b83366406f5d943be517 (HEAD -> main)
-Author: notybre <romanbrejer3@gmail.com>
-Date:   Thu Sep 4 15:47:05 2025 +0500
+git log
 
-    Первый коммит
+git log --oneline
 
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git log --oneline
-7944bf3 (HEAD -> main) Первый коммит
-
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git log --graph
-* commit 7944bf3d79e9c00590d9b83366406f5d943be517 (HEAD -> main)
-  Author: notybre <romanbrejer3@gmail.com>
-  Date:   Thu Sep 4 15:47:05 2025 +0500
-
-      Первый коммит
-
+git log --graph
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_5.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-39-12.jpg)
 
 ## Выводы
-Коммит осуществляется командой git commit -m комментарий. Также есть несколько способов посмотреть лог коммитов: -n (кол-во), --oneline (в одну линию), --graph
+Для создания коммита используется команда git commit -m "комментарий". Историю коммитов можно просматривать разными способами, например: -n (отображает указанное количество), --oneline (выводит в одну строку) и --graph (показывает граф в виде дерева)
+
 
 ## Лабораторная работа №6
 ### Подключение к удалённому репозиторию
 
 ``` git
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git remote add origin https://github.com/notybre/SoftwareEngineering
+git remote add origin https://github.com/WladCher/SoftwareEngineering
 
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git pull origin main
-remote: Enumerating objects: 3, done.
-remote: Counting objects: 100% (3/3), done.
-remote: Compressing objects: 100% (2/2), done.
-remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
-Unpacking objects: 100% (3/3), 933 bytes | 6.00 KiB/s, done.
-From https://github.com/notybre/SoftwareEngineering
- * branch            main       -> FETCH_HEAD
- * [new branch]      main       -> origin/main
-fatal: refusing to merge unrelated histories
+git pull origin main
 
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git stash
-No local changes to save
+git stash
 
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git stash apply
-No stash entries found.
+git stash apply
 
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git stash pop
-No stash entries found.
-
-
+git stash pop
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_6.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-44-19.jpg)
 
 ## Выводы
-С помощью git remote add можно связать локальный репозиторий гит с удаленным репозиторием, например GitHub. Также можно добавить все незафиксированные изменения в стэш, чтобы было удобно переключаться с одной ветки на другую с незафиксипованными изменениями
+Командой git remote add локальный репозиторий можно привязать к удалённому, например на GitHub. А для удобного переключения между ветками при наличии несохранённых изменений их можно поместить в стэш с помощью соответствующей команды
+
 
 ## Лабораторная работа №7
 ### Ветвление
 
 ``` git
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git branch TestBranch
+git branch TestBranch
 
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git checkout TestBranch
-Switched to branch 'TestBranch'
+git checkout TestBranch
 
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (TestBranch)
-$ git switch TestBranch
-Already on 'TestBranch'
+git switch TestBranch
 
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (TestBranch)
-$ git merge faeture
-merge: faeture - not something we can merge
-
+git merge faeture
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_7.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-46-12.jpg)
 
 ## Выводы
-Ветвление происходит с помощью команды git branch. Для работы непосредственно с ветками нужно провести checkout имя_ветки.
+Создание веток выполняется через команду git branch, а для перехода к работе в конкретной ветке используется git checkout имя_ветки
 
 ## Лабораторная работа №8
 ### Фетч
 
 ``` git
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (TestBranch)
-$ git fetch https://github.com/notybre/SoftwareEngineering
-From https://github.com/notybre/SoftwareEngineering
- * branch            HEAD       -> FETCH_HEAD
-
+git fetch https://github.com/WladCher/SoftwareEngineering
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_8.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-47-09.jpg)
 
 ## Выводы
-Фетч является предварительной операцией перед слиянием или преобразованием. Позволяет проверить конфликтность перед изменениями.
+Команда git fetch выполняется перед слиянием или применением изменений и позволяет заранее проверить возможные конфликты, не внося их сразу в текущую ветку
 
 ## Лабораторная работа №9
 ### Удаление файлов, веток, локальных и удаленных репозиториев.
 
 ``` git
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (TestBranch)
-$ git rm proba.txt
-rm 'proba.txt'
-
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git branch -d TestBranch
-Deleted branch TestBranch (was 7944bf3).
-
+git rm proba.txt
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_9.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-48-44.jpg)
 
 ## Выводы
-Есть много способов удалить файл / ветку, в том числе: git rm --cached file.txt (удаляет файл только из индекса) и различие -d (безопасное удаление ветки - проверяет что ветка была слита перед удалением) и -D (принудительное удаление ветки)
+Команда git rm --cached file.txt убирает файл только из индекса, а для удаления веток используются ключи: -d — безопасное удаление с проверкой, что ветка была слита, и -D — принудительное удаление без проверки
+
 
 ## Лабораторная работа №10
 ### Отслеживание изменений в коммитах
 
 ``` git
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git log
-commit 7944bf3d79e9c00590d9b83366406f5d943be517 (HEAD -> main)
-Author: notybre <romanbrejer3@gmail.com>
-Date:   Thu Sep 4 15:47:05 2025 +0500
+git log
 
-    Первый коммит
-
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git diff
-
-
+git diff
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_10.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-49-33.jpg)
 
 ## Выводы
-Можно посмотреть изменения в коммитах с помощью git log и git diff коммит1 коммит2 (различия между коммитами). Также можно просматривать изменения с помощью GitHub Desktop.
+Изменения в коммитах можно просмотреть с помощью git log, а различия между конкретными коммитами — через git diff коммит1 коммит2. Кроме того, для просмотра изменений удобно использовать GitHub Desktop
 
 ## Лабораторная работа №11
 ### Возвращение файла к предыдущему состоянию.
 
 ``` git
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git checkout main --testfile.txt
-error: unknown option `testfile.txt'
-usage: git checkout [<options>] <branch>
-   or: git checkout [<options>] [<branch>] -- <file>...
+git checkout main --testfile.txt
 
-    -b <branch>           create and checkout a new branch
-    -B <branch>           create/reset and checkout a branch
-    -l                    create reflog for new branch
-    --[no-]guess          second guess 'git checkout <no-such-branch>' (default)
-    --[no-]overlay        use overlay mode (default)
-    -q, --[no-]quiet      suppress progress reporting
-    --[no-]recurse-submodules[=<checkout>]
-                          control recursive updating of submodules
-    --[no-]progress       force progress reporting
-    -m, --[no-]merge      perform a 3-way merge with the new branch
-    --[no-]conflict <style>
-                          conflict style (merge, diff3, or zdiff3)
-    -d, --[no-]detach     detach HEAD at named commit
-    -t, --[no-]track[=(direct|inherit)]
-                          set branch tracking configuration
-    -f, --[no-]force      force checkout (throw away local modifications)
-    --[no-]orphan <new-branch>
-                          new unborn branch
-    --[no-]overwrite-ignore
-                          update ignored files (default)
-    --[no-]ignore-other-worktrees
-                          do not check if another worktree is using this branch
-    -2, --ours            checkout our version for unmerged files
-    -3, --theirs          checkout their version for unmerged files
-    -p, --[no-]patch      select hunks interactively
-    -U, --unified <n>     generate diffs with <n> lines context
-    --inter-hunk-context <n>
-                          show context between diff hunks up to the specified nu
-mber of lines
-    --[no-]ignore-skip-worktree-bits
-                          do not limit pathspecs to sparse entries only
-    --[no-]pathspec-from-file <file>
-                          read pathspec from file
-    --[no-]pathspec-file-nul
-                          with --pathspec-from-file, pathspec elements are separ
-ated with NUL character
-
-
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git commit -m "Восстановление файла к предыдущему состоянию"
-[main 79fb612] Восстановление файла к предыдущему состоянию
- 1 file changed, 0 insertions(+), 0 deleti
+git commit -m "Восстановление файла к предыдущему состоянию"
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_11.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-51-47.jpg)
 
 ## Выводы
-Команда git checkout main --path заменит текущую версию файла на состояние из указанного коммита
+Команда git checkout main --path позволяет восстановить файл в рабочем каталоге, заменив его текущую версию на состояние из указанного коммита или ветки
 
 ## Лабораторная работа №12
 ### Возвращение к предыдущему коммиту
 
 ``` git
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git reset --soft HEAD^
-
+git reset --soft HEAD^
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_12.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-52-30.jpg)
 
 ## Выводы
-Работает примерно как Ctrl+Z в программах редакторах. Есть несколько вариантов отката --hard хэш_коммита, --hard, --soft (с сохранением изменений текущей директории)
+Откат в Git работает похожим образом на сочетание клавиш Ctrl+Z в редакторах. Для этого используются разные варианты: --hard хэш_коммита — возврат к указанному состоянию без сохранения изменений, --hard — полный сброс к последнему коммиту, а --soft — откат с сохранением изменений в рабочей директории
 
 ## Лабораторная работа №13
 ### Установка.
 
 ``` git
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git commit --amend
-[main cdfb4d1] Первый коммит
- Date: Thu Sep 4 15:47:05 2025 +0500
- 1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 testfile.txt
+git commit --amend
 
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git rebase --continue
-fatal: no rebase in progress
-
+git rebase --continue
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_13.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-53-43.jpg)
 
 ## Выводы
---amend открывает редактор (в моем случае VSCode, так, как настроил в начале). Можно исправить параметры коммита. git rebase -i HEAD~3 исправить коммит два коммита назад
+Опция --amend открывает редактор (например, VSCode, если он задан в настройках) и позволяет изменить параметры последнего коммита. Команда git rebase -i HEAD~3 даёт возможность внести правки в один из последних трёх коммитов, например, изменить коммит, сделанный два шага назад
 
 ## Лабораторная работа №14
 ### Разрешение конфликтов при слиянии
 
 ``` git
-Roman@Computer MINGW64 /a/GIT/SoftwareEngineering (main)
-$ git merge TestBranch1
-Already up to date.
+git merge TestBranch
 
+git add .
+
+git commit
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_14.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-57-30.jpg)
 
 ## Выводы
-Для того, чтобы разрешить конфликты при слиянии (merge) необходимо:
+Чтобы устранить конфликты при слиянии (merge), выполняется следующий порядок действий:
 
-1. Запустить команду слияния
-2. Открыть файлы с конфликтами с помощью метки '<<<<<<<HEAD'и '>>>>>>>имя_ветки'
-3. Разрешить конфликты, оставить только код, который должен остаться
-4. Добавить измененные файлы
-5. Продолжить операцию слияния
+1. Запустить команду слияния.
+2. Открыть файлы с конфликтами, отмеченными маркерами <<<<<<< HEAD и >>>>>>> имя_ветки.
+3. Вручную решить конфликт, оставив нужный вариант кода.
+4. Добавить исправленные файлы в индекс.
+5. Продолжить процесс слияния.
 6. Завершить слияние
 
 ## Лабораторная работа №15
 ### Настройка .gitignore
 
 ``` git
+#Это комментарий
+
 *.log
 node_modules/
 .env
 temp/*
 ```
 ### Результат.
-![Меню](https://github.com/notybre/SoftwareEngineering/blob/Tema_1/pic/Tema1_15.PNG)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-59-51.jpg)
 
 ## Выводы
-С помощью .gitignore можно исключить ненужные файлы, сократить размер репозитория, улучшить безопасность и сохранить чистоту репозитория.
+Файл .gitignore позволяет исключать ненужные файлы из отслеживания, что сокращает размер репозитория, повышает безопасность и поддерживает его чистоту
 
 ## Общие выводы по теме
-Гит - наиболее популярный инструмент управления версиями. Его ключевые аспекты:
-- Управление версиями кода. Можно сохранять историю изменений, откатывать код
-- Совместная работа. Множество разработчиков может работать над одним проектом
+Git — это самый популярный инструмент для управления версиями, ключевые возможности которого включают:
+- Управление версиями кода: сохранение истории изменений и откат к предыдущим версиям
+- Совместная работа: несколько разработчиков могут работать над одним проектом одновременно
 - Ветвление и слияние
-- История изменений
+- Просмотр истории изменений
 - Восстановление данных
 - Работа в оффлайне
-- Эффективное управление конфликтами
+- Эффективное разрешение конфликтов
 - Открытый исходный код
 
-Общая ценность Git заключается в увеличении эффективности разработки ПО.
-
+Главная ценность Git заключается в повышении эффективности разработки программного обеспечения.
