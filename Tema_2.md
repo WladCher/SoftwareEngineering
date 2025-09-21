@@ -36,15 +36,12 @@ Git установлен
 ### Настройка.
 
 ``` git
-git config --global user.name "WladCher"
-
-git config --global user.email "maxvlad95@gmail.com"
-
-git config --global core.editor "code --wait"
-
+print(1823-486)
+print(5.1 + 8.27)
+print(3+7.04+1+2.33)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-21-07.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab2.jpg)
 
 ## Выводы
 Были установлены имя и почта пользователя и был устновлен VSCode в качестве эдитора коммитов 
@@ -56,7 +53,7 @@ git config --global core.editor "code --wait"
 git init
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-31-33.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab3.jpg)
 
 ## Выводы
 Создан пустой репозиторий
@@ -70,7 +67,7 @@ git add proba.txt
 git status
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-35-34.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab4.jpg)
 
 ## Выводы
 Файл proba.txt подготовлен к коммиту
@@ -88,7 +85,7 @@ git log --oneline
 git log --graph
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-39-12.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab5.jpg)
 
 ## Выводы
 Для создания коммита используется команда git commit -m "комментарий". Историю коммитов можно просматривать разными способами, например: -n (отображает указанное количество), --oneline (выводит в одну строку) и --graph (показывает граф в виде дерева)
@@ -109,7 +106,7 @@ git stash apply
 git stash pop
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-44-19.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab6.jpg)
 
 ## Выводы
 Командой git remote add локальный репозиторий можно привязать к удалённому, например на GitHub. А для удобного переключения между ветками при наличии несохранённых изменений их можно поместить в стэш с помощью соответствующей команды
@@ -128,7 +125,7 @@ git switch TestBranch
 git merge faeture
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-46-12.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab7.jpg)
 
 ## Выводы
 Создание веток выполняется через команду git branch, а для перехода к работе в конкретной ветке используется git checkout имя_ветки
@@ -140,7 +137,7 @@ git merge faeture
 git fetch https://github.com/WladCher/SoftwareEngineering
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-47-09.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab8.jpg)
 
 ## Выводы
 Команда git fetch выполняется перед слиянием или применением изменений и позволяет заранее проверить возможные конфликты, не внося их сразу в текущую ветку
@@ -152,7 +149,7 @@ git fetch https://github.com/WladCher/SoftwareEngineering
 git rm proba.txt
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-48-44.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab9.jpg)
 
 ## Выводы
 Команда git rm --cached file.txt убирает файл только из индекса, а для удаления веток используются ключи: -d — безопасное удаление с проверкой, что ветка была слита, и -D — принудительное удаление без проверки
@@ -167,7 +164,7 @@ git log
 git diff
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-49-33.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab10.jpg)
 
 ## Выводы
 Изменения в коммитах можно просмотреть с помощью git log, а различия между конкретными коммитами — через git diff коммит1 коммит2. Кроме того, для просмотра изменений удобно использовать GitHub Desktop
