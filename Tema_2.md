@@ -27,7 +27,7 @@ print("123")
 print(1.23)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_1/pic/photo_2025-09-15_03-09-50.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_2/pic/lab1.jpg)
 
 ## Выводы
 Git установлен
