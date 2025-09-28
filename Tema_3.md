@@ -232,7 +232,7 @@ for i in range(2):
 print(x)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab1.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab2.jpg)
 
 ## Выводы
 Применение bool(0) дает False, потому что ноль воспринимается как ложное значение в логическом контексте
@@ -246,7 +246,7 @@ for ch in "Hello World"[::-1]:
     print(ch)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab2.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab3.jpg)
 
 ## Выводы
 С помощью одного выражения можно сразу присвоить значения нескольким переменным и затем вывести их в одной строке
@@ -268,7 +268,7 @@ else:
     print("Число вне диапазона")
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab3.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab4.jpg)
 
 ## Выводы
 Функция int() преобразует строку в число, а при некорректном вводе (например, буквы) возникает ошибка ValueError
@@ -287,7 +287,7 @@ print("Начинается с 'The':", s.startswith("The"))
 print("Заканчивается на 'end':", s.endswith("end"))
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab4.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab5.jpg)
 
 ## Выводы
 Умножение строки на число дает возможность многократного повторения её содержимого
@@ -310,7 +310,7 @@ while ' world' not in string:
     counter += 1
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab5.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab1.jpg)
 
 ## Выводы
 Форматированные строки (f"") позволяют легко вставлять переменные в текст
