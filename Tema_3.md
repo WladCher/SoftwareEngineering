@@ -61,14 +61,12 @@ else:
 ### Задание 3
 
 ``` git
-print('Привет, Мир!')
-
-world = 'Мир'
-print(f"Привет, {world}!")
-
-one = 'Привет, '
-two = 'Мир!'
-print(one+two)
+numbers = [1, 3, 4, 6, 8, 9]
+value = int(input("Введите значение переменной: "))
+if value in numbers:
+    print("Переменная есть в данном массиве")
+else:
+    print("Переменной нет в этом массиве")
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab3.jpg)
@@ -81,14 +79,15 @@ print(one+two)
 ### Задание 4
 
 ``` git
-one = 'Hello'
-print(bool(one))
-
-two = 142
-print(float(two))
-
-three = None
-print(str(three))
+numbers = [1, 3, 4, 6, 8, 9, 15, 16, 73, 321, 322]
+value = int(input("Введите значение переменной: "))
+if value in numbers:
+    if value % 2 == 0:
+        print("Переменная четная и есть вмассиве")
+    else:
+        print("Переменная нечетная и есть в массиве")
+else:
+    print(f"Переменной нет в массиве и она равна {value}")
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab4.jpg)
@@ -101,10 +100,18 @@ print(str(three))
 ### Задание 5
 
 ``` git
-one = input('one:')
-two = input('two:')
-three = input('three:')
-print(one, two, three)
+for i in range(10):
+    print('i = ', i)
+    if i ==0:
+      i+=2
+    if i == 1:
+      continue
+    if i == 2 or i == 3:
+      print("Переменная равна 2 или 3")
+    elif i in [4,5,6]:
+      print("Переменная равна 4, 5 или 6")
+    else:
+      break
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab5.jpg)
@@ -117,12 +124,15 @@ print(one, two, three)
 ### Задание 6
 
 ``` git
-a = 12
-b = 5
-print('Возведение в степень:', a**b)
-print('Обычное деление:', a/b)
-print('Целочисленное деление:', a//b)
-print('Нахождение остатка от деления:', a%b)
+string = "Привет всем изучающим Python!"
+value = input()
+for i in string:
+    if i == value:
+        index = string.find(value)
+        print(f"Буква '{value}' есть в строке под {index} индексом")
+        break
+else:
+    print(f"Буквы '{value}' нет в указанной строке")
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab6.jpg)
@@ -135,8 +145,10 @@ print('Нахождение остатка от деления:', a%b)
 ### Задание 7
 
 ``` git
-line = 'Hello!'
-print(line*6)
+value = 100
+for i in range(10, -1, -1):
+    value -= i
+    print(i, value)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab7.jpg)
@@ -149,8 +161,15 @@ print(line*6)
 ### Задание 8
 
 ``` git
-sentence = 'Hello World'
-print(sentence.count('o'))
+value = 0
+while value < 100:
+    if value == 0:
+      value+=10
+    elif value // 5 > 1:
+      value*=5
+    else:
+      value-=5
+    print(value)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab8.jpg)
@@ -163,7 +182,14 @@ print(sentence.count('o'))
 ### Задание 9
 
 ``` git
-print('Hello\nWorld!')
+value = 0
+for i in range(10):
+    for j in range(10):
+        if i != j:
+          value+=j
+        else:
+          pass
+print(value)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab9.jpg)
@@ -176,9 +202,16 @@ print('Hello\nWorld!')
 ### Задание 10
 
 ``` git
-sentence = 'Hello World'
-print(sentence[1])
-print(sentence[:5])
+even_array = [2, 4, 6, 8, 9]
+flag = False
+for value in even_array:
+    if value % 2 == 1:
+        flag = True
+        break
+if flag is True:
+  print("В массиве есть нечетное число")
+else:
+  print("В массиве все числа четные")
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab10.jpg)
@@ -188,11 +221,15 @@ print(sentence[:5])
 
 ---
 
-## Самостоятельная работа №2
+## Самостоятельная работа №3
 ### Задание 1
 
 ``` git
-print(bool(0))
+x = 1
+for i in range(2): 
+    x *= 5
+    x += 1
+print(x)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab1.jpg)
@@ -205,8 +242,8 @@ print(bool(0))
 ### Задание 2
 
 ``` git
-a,b,c = 11,22,33
-print(a,b,c)
+for ch in "Hello World"[::-1]:
+    print(ch)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab2.jpg)
@@ -219,8 +256,16 @@ print(a,b,c)
 ### Задание 3
 
 ``` git
-x = int(input())
-print(x)
+x = int(input("Введите число 0-10: "))
+if 0 <= x <= 10:
+    if x <= 3:
+        print("0–3")
+    elif x <= 6:
+        print("3–6")
+    else:
+        print("6–10")
+else:
+    print("Число вне диапазона")
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab3.jpg)
@@ -233,8 +278,13 @@ print(x)
 ### Задание 4
 
 ``` git
-a = "abcde"
-print(a*8)
+s = input("Введите предложение: ")
+print("Длина:", len(s))
+print("Нижнем регистр:", s.lower())
+print("Количество гласных:", sum(ch in "aeiou" for ch in s.lower()))
+print("Замена ugly:", s.replace("ugly", "beauty"))
+print("Начинается с 'The':", s.startswith("The"))
+print("Заканчивается на 'end':", s.endswith("end"))
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab4.jpg)
@@ -247,8 +297,17 @@ print(a*8)
 ### Задание 5
 
 ``` git
-day,month,year = 22,"сентября",2025
-print(f"Сегодня {day} {month} {year}.", end=" Всего хорошего!")
+string = 'hello'
+values = [0,2,4,6,8,10]
+counter = 0
+while ' world' not in string:
+    memory = string
+    if counter in values:
+        string = string + ' world'
+    print(string)
+    if counter < 10:
+        string = memory
+    counter += 1
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab5.jpg)
