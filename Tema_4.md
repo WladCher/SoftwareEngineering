@@ -31,7 +31,7 @@ if __name__ == '__main__':
     main()
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab1.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/lab1.jpg)
 
 ## Выводы
 Программа правильно обрабатывает и сравнивает введённые данные
@@ -48,7 +48,7 @@ if __name__ == '__main__':
     print(main())
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab2.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/lab2.jpg)
 
 ## Выводы
 Программа корректно определяет три диапазона значений
@@ -69,7 +69,7 @@ for i in range(5):
     print(answer)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab3.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/lab3.jpg)
 
 ## Выводы
 Оператор in удобно использовать для поиска элемента в массиве
@@ -91,7 +91,7 @@ if __name__ == '__main__':
     print(f"\nresult={result}")
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab4.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/lab4.jpg)
 
 ## Выводы
 Программа проверяет как наличие числа, так и его чётность
@@ -116,7 +116,7 @@ if __name__ == '__main__':
     main(**{'x':[1,2,3],'y':[3,3,0]})
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab5.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/lab5.jpg)
 
 ## Выводы
 Цикл демонстрирует работу операций сравнения
@@ -136,7 +136,7 @@ if __name__ == '__main__':
     main(x=[1,2,3],y=[3,3,0])
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab6.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/lab6.jpg)
 
 ## Выводы
 Оператор else в цикле срабатывает только при отсутствии break
@@ -156,7 +156,8 @@ if __name__ == '__main__':
     say_hello()
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab7.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/lab7.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/lab7.1.jpg)
 
 ## Выводы
 Цикл for можно легко организовать в обратном порядке
@@ -177,7 +178,7 @@ if __name__ == '__main__':
     main()
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab8.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/lab8.jpg)
 
 ## Выводы
 При корректном условии цикл while завершает работу правильно
@@ -207,7 +208,7 @@ if __name__ == '__main__':
     main()
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab9.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/lab9.jpg)
 
 ## Выводы
 Вложенные циклы дают возможность проверять различные комбинации значений
@@ -241,7 +242,7 @@ elif figure == '2':
 print(f"Площадь: {result}")
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab10.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/lab10.jpg)
 
 ## Выводы
 Переменная flag удобно применять как индикатор выполнения условия
@@ -273,7 +274,7 @@ if __name__ == '__main__':          # проверяем, что скрипт з
     print(f"Время выполнения программы - {time_costs}")  # выводим продолжительность работы программы
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab2.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/samrab1.jpg)
 
 ## Выводы
 Программа выполняет задачу, используя исключительно разрешённые операции
@@ -300,7 +301,7 @@ if __name__ == "__main__":
     cube()
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab3.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/samrab2.jpg)
 
 ## Выводы
 Строка выводится по символам в обратном порядке
@@ -318,7 +319,7 @@ for i in range(5):
     time.sleep(1)                            
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab4.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/samrab3.jpg)
 
 ## Выводы
 Программа правильно обрабатывает диапазоны чисел
@@ -335,7 +336,7 @@ if __name__ == "__main__":
     print("Среднее арифметическое - ", average(4, 12, 8, 1, 2))
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab5.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/samrab4.jpg)
 
 ## Выводы
 Программа выполняет все операции со строкой: подсчитывает символы, переводит в нижний регистр, считает количество гласных с помощью строки гласных, заменяет слова в предложении, начинает строку с The и завершает на end
@@ -364,7 +365,8 @@ if __name__ == "__main__":
     print("Площадь треугольника равна - ", area)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab1.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/samrab5.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_4/pic/samrab5.1.jpg)
 
 ## Выводы
 Программа отображает необходимые строки в консоли
