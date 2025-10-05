@@ -1,4 +1,4 @@
-# Тема 4. Функции и модули
+<img width="842" height="859" alt="image" src="https://github.com/user-attachments/assets/95fc5288-41ec-4a4b-8374-ff803e285c26" /># Тема 4. Функции и модули
 Отчет по Теме #4 выполнил:
 - Червяков Владислав Максимович 
 - ПИЭ-23-2
@@ -24,12 +24,11 @@
 ### Задание 1
 
 ``` git
-one = int(input("Введите значение первой переменной: "))
-two = int(input("Введите значение второй переменной: "))
-if one >= two:
-    print("Выполняется")
-else:
-    print("Не выполняется")
+def main():
+    print(2*2)
+
+if __name__ == '__main__':
+    main()
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab1.jpg)
@@ -42,13 +41,11 @@ else:
 ### Задание 2
 
 ``` git
-one = int(input("Введите значение переменной: "))
-if one < 0:
-    print("Меньше 0")
-elif 0 < one < 10:
-    print("Переменная больше 0 и меньше 10")
-else:
-    print("Переменная больше 10")
+def main():
+    return 2+2
+
+if __name__ == '__main__':
+    print(main())
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab2.jpg)
@@ -61,12 +58,15 @@ else:
 ### Задание 3
 
 ``` git
-numbers = [1, 3, 4, 6, 8, 9]
-value = int(input("Введите значение переменной: "))
-if value in numbers:
-    print("Переменная есть в данном массиве")
-else:
-    print("Переменной нет в этом массиве")
+def main(one, two):
+    result = one + two
+    return result
+
+for i in range(5):
+    x = 1
+    y = 10
+    answer = main(x, y)
+    print(answer)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab3.jpg)
@@ -79,15 +79,16 @@ else:
 ### Задание 4
 
 ``` git
-numbers = [1, 3, 4, 6, 8, 9, 15, 16, 73, 321, 322]
-value = int(input("Введите значение переменной: "))
-if value in numbers:
-    if value % 2 == 0:
-        print("Переменная четная и есть вмассиве")
-    else:
-        print("Переменная нечетная и есть в массиве")
-else:
-    print(f"Переменной нет в массиве и она равна {value}")
+def main(x, *args):
+    one = x
+    two = sum(args)
+    three = float(len(args))
+    print(f"one={one}\ntwo={two}\nthree={three}")
+    return x+sum(args)/float(len(args))
+
+if __name__ == '__main__':
+    result = main(10,0,1,2,-1,0,-1,1,2)
+    print(f"\nresult={result}")
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab4.jpg)
@@ -100,18 +101,19 @@ else:
 ### Задание 5
 
 ``` git
-for i in range(10):
-    print('i = ', i)
-    if i ==0:
-      i+=2
-    if i == 1:
-      continue
-    if i == 2 or i == 3:
-      print("Переменная равна 2 или 3")
-    elif i in [4,5,6]:
-      print("Переменная равна 4, 5 или 6")
-    else:
-      break
+def main(**kwargs):
+    for i in kwargs.items():
+        print(i[0], i[1])
+    
+    print()
+
+    for key in kwargs:
+        print(f"{key}={kwargs[key]}")
+
+if __name__ == '__main__':
+    main(x=[1,2,3],y=[3,3,0],z=[2,3,0],q=[3,3,0],w=[3,3,0])
+    print()
+    main(**{'x':[1,2,3],'y':[3,3,0]})
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab5.jpg)
@@ -124,15 +126,14 @@ for i in range(10):
 ### Задание 6
 
 ``` git
-string = "Привет всем изучающим Python!"
-value = input()
-for i in string:
-    if i == value:
-        index = string.find(value)
-        print(f"Буква '{value}' есть в строке под {index} индексом")
-        break
-else:
-    print(f"Буквы '{value}' нет в указанной строке")
+def main(**kwargs):
+    for i, j in kwargs.items():
+        print(f"{i}. Mean = {mean(j)}")
+def mean(data):
+    return sum(data)/float(len(data))
+
+if __name__ == '__main__':
+    main(x=[1,2,3],y=[3,3,0])
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab6.jpg)
@@ -144,10 +145,15 @@ else:
 ### Задание 7
 
 ``` git
-value = 100
-for i in range(10, -1, -1):
-    value -= i
-    print(i, value)
+def say_hello():
+    print('Hello students!')
+```
+
+``` git
+from for_import import say_hello
+
+if __name__ == '__main__':
+    say_hello()
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab7.jpg)
@@ -160,15 +166,15 @@ for i in range(10, -1, -1):
 ### Задание 8
 
 ``` git
-value = 0
-while value < 100:
-    if value == 0:
-      value+=10
-    elif value // 5 > 1:
-      value*=5
-    else:
-      value-=5
-    print(value)
+from math import sqrt, sin, cos
+def main():
+    value = int(input('Введите значение: '))
+    print(sqrt(value))
+    print(sin(value))
+    print(cos(value))
+
+if __name__ == '__main__':
+    main()
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab8.jpg)
@@ -181,14 +187,24 @@ while value < 100:
 ### Задание 9
 
 ``` git
-value = 0
-for i in range(10):
-    for j in range(10):
-        if i != j:
-          value+=j
-        else:
-          pass
-print(value)
+from datetime import datetime as dt
+from datetime import timedelta as td
+
+def main():
+    print(
+        f"Сегодня {dt.today().date()}."
+        f"День недели - {dt.today().isoweekday()}"
+    )
+    n = int(input('Введите количество дней: '))
+    today = dt.today()
+    result = today + td(days=n)
+    print(
+        f"Через {n} дней будет {result.date()}."
+        f"День недели - {result.isoweekday()}"
+    )
+
+if __name__ == '__main__':
+    main()
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab9.jpg)
@@ -201,16 +217,28 @@ print(value)
 ### Задание 10
 
 ``` git
-even_array = [2, 4, 6, 8, 9]
-flag = False
-for value in even_array:
-    if value % 2 == 1:
-        flag = True
-        break
-if flag is True:
-  print("В массиве есть нечетное число")
-else:
-  print("В массиве все числа четные")
+global result
+
+def rectangle():
+    a = float(input("Ширина: "))
+    b = float(input("Высота: "))
+    global result
+    result = a*b
+
+def triangle():
+    a = float(input("Основание: "))
+    h = float(input("Высота: "))
+    global result
+    result = 0.5*a*h
+
+figure = input("1 - прямоугольник, 2 - треугольник: ")
+
+if figure == '1':
+    rectangle()
+elif figure == '2':
+    triangle()
+
+print(f"Площадь: {result}")
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/lab10.jpg)
@@ -220,15 +248,29 @@ else:
 
 ---
 
-## Самостоятельная работа №3
+## Самостоятельная работа №4
 ### Задание 1
 
 ``` git
-x = 1
-for i in range(2): 
-    x *= 5
-    x += 1
-print(x)
+from datetime import datetime      # импортируем класс для работы с датой и временем
+from math import sqrt              # импортируем функцию для вычисления квадратного корня
+
+def main(**kwargs):                 # создаем функцию, которая принимает любое количество именованных аргументов
+    for key in kwargs.items():      # проходим по всем парам (ключ,значение) в словаре kwargs
+        result = sqrt(key[1][0] ** 2 + key[1][1] ** 2)  # считаем длину вектора по формуле Пифагора
+        print(result)               # выводим полученное значение на экран
+
+if __name__ == '__main__':          # проверяем, что скрипт запускается напрямую, а не импортируется
+    start_time = datetime.now()     # фиксируем время начала работы программы
+    main(                           # вызываем функцию main с несколькими списками в качестве аргументов
+        one=[10, 3],
+        two=[5, 4],
+        three=[15, 13],
+        four=[93, 53],
+        five=[133, 15]
+    )
+    time_costs = datetime.now() - start_time   # определяем, сколько времени заняло выполнение программы
+    print(f"Время выполнения программы - {time_costs}")  # выводим продолжительность работы программы
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab2.jpg)
@@ -241,8 +283,21 @@ print(x)
 ### Задание 2
 
 ``` git
-for ch in "Hello World"[::-1]:
-    print(ch)
+import random
+
+def cube():
+    value = random.randint(1, 6)
+    print(f"Выпавшее число - {value}")
+    
+    if value in (5, 6):
+        print("Вы победили")
+    elif value in (3, 4):
+        cube()
+    else:
+        print("Вы проиграли")
+
+if __name__ == "__main__":
+    cube()
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab3.jpg)
@@ -255,16 +310,12 @@ for ch in "Hello World"[::-1]:
 ### Задание 3
 
 ``` git
-x = int(input("Введите число 0-10: "))
-if 0 <= x <= 10:
-    if x <= 3:
-        print("0–3")
-    elif x <= 6:
-        print("3–6")
-    else:
-        print("6–10")
-else:
-    print("Число вне диапазона")
+import time
+from datetime import datetime
+
+for i in range(5):
+    print(datetime.now().strftime("%H:%M:%S"))
+    time.sleep(1)                            
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab4.jpg)
@@ -277,13 +328,11 @@ else:
 ### Задание 4
 
 ``` git
-s = input("Введите предложение: ")
-print("Длина:", len(s))
-print("Нижнем регистр:", s.lower())
-print("Количество гласных:", sum(ch in "aeiou" for ch in s.lower()))
-print("Замена ugly:", s.replace("ugly", "beauty"))
-print("Начинается с 'The':", s.startswith("The"))
-print("Заканчивается на 'end':", s.endswith("end"))
+def average(*args):
+    return sum(args) / len(args)
+
+if __name__ == "__main__":
+    print("Среднее арифметическое - ", average(4, 12, 8, 1, 2))
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab5.jpg)
@@ -296,17 +345,23 @@ print("Заканчивается на 'end':", s.endswith("end"))
 ### Задание 5
 
 ``` git
-string = 'hello'
-values = [0,2,4,6,8,10]
-counter = 0
-while ' world' not in string:
-    memory = string
-    if counter in values:
-        string = string + ' world'
-    print(string)
-    if counter < 10:
-        string = memory
-    counter += 1
+import math
+
+def f_heron(a, b, c):
+    p = (a + b + c) / 2
+    return math.sqrt(p * (p - a) * (p - b) * (p - c))
+```
+
+``` git
+from triangle import f_heron
+
+if __name__ == "__main__":
+    a = float(input("Cторона a: "))
+    b = float(input("Сторона b: "))
+    c = float(input("Сторона c: "))
+    
+    area = f_heron(a, b, c)
+    print("Площадь треугольника равна - ", area)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_3/pic/samrab1.jpg)
