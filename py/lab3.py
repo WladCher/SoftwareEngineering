@@ -1,0 +1,12 @@
+#def replace(input_list):
+#    memory = input_list[0]
+#    input_list[0] = input_list[-1]
+#    input_list[-1] = memory
+#
+#    return input_list
+#
+#print(replace([1,2,3,4,5]))
+
+lst = [1, 2, 3, 4, 5]
+lst[0], lst[-1] = lst[-1], lst[0]
+print(lst)
