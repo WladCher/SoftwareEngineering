@@ -24,11 +24,17 @@
 ### Задание 1
 
 ``` git
-def main():
-    print(2*2)
+set_1 = {'White','Black','Red','Pink'}
+set_2 = {'Red','Green','Blue','Red'}
+print('1', set_1 - set_2)
 
-if __name__ == '__main__':
-    main()
+set_1 = {'White','Black','Red','Pink','Black','White'}
+set_2 = {'Red','Green','Blue','Red'}
+print('2', set_1 - set_2)
+
+set_1 = {'White','Black','Red','Pink','Red','Red'}
+set_2 = {'Red','Green','Red','Red','Red'}
+print('3', set_1 - set_2)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/lab1.jpg)
@@ -41,11 +47,11 @@ if __name__ == '__main__':
 ### Задание 2
 
 ``` git
-def main():
-    return 2+2
-
-if __name__ == '__main__':
-    print(main())
+a = set('abcdefg')
+print(a)
+for i in range(1,5):
+    a.add(i)
+print(a)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/lab2.jpg)
@@ -58,26 +64,19 @@ if __name__ == '__main__':
 ### Задание 3
 
 ``` git
-def main(one, two):
-    result = one + two
-    return result
+def replace(input_list):
+    memory = input_list[0]
+    input_list[0] = input_list[-1]
+    input_list[-1] = memory
 
-for i in range(5):
-    x = 1
-    y = 10
-    answer = main(x, y)
-    print(answer)
+    return input_list
+
+print(replace([1,2,3,4,5]))
 ```
 ``` git
-def main(one, two):
-    result = one + two
-    return result
-
-for i in range(5):
-    x = 1
-    y = 10
-    answer = main(x, y)
-    print(answer)
+lst = [1, 2, 3, 4, 5]
+lst[0], lst[-1] = lst[-1], lst[0]
+print(lst)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/lab3.1.jpg)
@@ -91,16 +90,8 @@ for i in range(5):
 ### Задание 4
 
 ``` git
-def main(x, *args):
-    one = x
-    two = sum(args)
-    three = float(len(args))
-    print(f"one={one}\ntwo={two}\nthree={three}")
-    return x+sum(args)/float(len(args))
-
-if __name__ == '__main__':
-    result = main(10,0,1,2,-1,0,-1,1,2)
-    print(f"\nresult={result}")
+a = [12,54,32,57,843,2346,765,75,25,234,756,23]
+print(a[2:6])
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/lab4.jpg)
@@ -113,19 +104,12 @@ if __name__ == '__main__':
 ### Задание 5
 
 ``` git
-def main(**kwargs):
-    for i in kwargs.items():
-        print(i[0], i[1])
-    
-    print()
+def useless(lst):
+    return max(lst) / len(lst)
 
-    for key in kwargs:
-        print(f"{key}={kwargs[key]}")
-
-if __name__ == '__main__':
-    main(x=[1,2,3],y=[3,3,0],z=[2,3,0],q=[3,3,0],w=[3,3,0])
-    print()
-    main(**{'x':[1,2,3],'y':[3,3,0]})
+print(useless([3, 5, 7, 3,33]))
+print(useless([-12.5, 54, 77.3, 0,-36,98.2,-63,21.7,47,-89.6]))
+print(useless([-25.8, 86, 12.5, -56,73.2,0,43,-91.5,65.9,-7]))
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/lab5.jpg)
@@ -138,14 +122,12 @@ if __name__ == '__main__':
 ### Задание 6
 
 ``` git
-def main(**kwargs):
-    for i, j in kwargs.items():
-        print(f"{i}. Mean = {mean(j)}")
-def mean(data):
-    return sum(data)/float(len(data))
+superheroes = ['superman', 'spiderman', 'batman']
+nikolay, vasiliy, ivan = superheroes
 
-if __name__ == '__main__':
-    main(x=[1,2,3],y=[3,3,0])
+print('Николай - ', nikolay)
+print('Василий - ', vasiliy)
+print('Иван - ', ivan)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/lab6.jpg)
@@ -158,16 +140,13 @@ if __name__ == '__main__':
 ### Задание 7
 
 ``` git
-def say_hello():
-    print('Hello students!')
+a = [-25.8, 86, 12.5, -56, 73.2, 0, 43, -91.5, 65.9, -7]
+a.sort()
+print('Отсортированный список:\n ', a)
+a.pop(0)
+print('Отсортированный список без наименьшего элемента:\n ', a)
 ```
 
-``` git
-from for_import import say_hello
-
-if __name__ == '__main__':
-    say_hello()
-```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/lab7.jpg)
 
@@ -179,15 +158,18 @@ if __name__ == '__main__':
 ### Задание 8
 
 ``` git
-from math import sqrt, sin, cos
-def main():
-    value = int(input('Введите значение: '))
-    print(sqrt(value))
-    print(sin(value))
-    print(cos(value))
+from random import randint
+
+def list_maker():
+    a = [randint(1,100)]*randint(3,10)
+    return a
 
 if __name__ == '__main__':
-    main()
+    result = []
+    for i in range(randint(1,5)):
+        result.append(list_maker())
+
+    print(result)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/lab8.jpg)
@@ -200,24 +182,21 @@ if __name__ == '__main__':
 ### Задание 9
 
 ``` git
-from datetime import datetime as dt
-from datetime import timedelta as td
-
-def main():
-    print(
-        f"Сегодня {dt.today().date()}."
-        f"День недели - {dt.today().isoweekday()}"
-    )
-    n = int(input('Введите количество дней: '))
-    today = dt.today()
-    result = today + td(days=n)
-    print(
-        f"Через {n} дней будет {result.date()}."
-        f"День недели - {result.isoweekday()}"
-    )
+def superset(set_1, set_2):
+    if set_1 == set_2:
+        print(f"Множества равны")
+    elif set_1 > set_2:
+        print(f"Объект {set_1} является чистым супермножеством")
+    elif set_2 > set_1:
+        print(f"Объект {set_2} является чистым супермножеством")
+    else:
+        print("Супермножество не обнаружено")
 
 if __name__ == '__main__':
-    main()
+    superset({1,8,3,5}, {3,5})
+    superset({1,8,3,5}, {5,3,8,1})
+    superset({3,5}, {5,3,8,1})
+    superset({90,100}, {3,5})
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/lab9.jpg)
@@ -230,28 +209,8 @@ if __name__ == '__main__':
 ### Задание 10
 
 ``` git
-global result
-
-def rectangle():
-    a = float(input("Ширина: "))
-    b = float(input("Высота: "))
-    global result
-    result = a*b
-
-def triangle():
-    a = float(input("Основание: "))
-    h = float(input("Высота: "))
-    global result
-    result = 0.5*a*h
-
-figure = input("1 - прямоугольник, 2 - треугольник: ")
-
-if figure == '1':
-    rectangle()
-elif figure == '2':
-    triangle()
-
-print(f"Площадь: {result}")
+my_list = [2,5,8,3]
+print(my_list[::-1])
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/lab10.jpg)
@@ -265,25 +224,23 @@ print(f"Площадь: {result}")
 ### Задание 1
 
 ``` git
-from datetime import datetime      # импортируем класс для работы с датой и временем
-from math import sqrt              # импортируем функцию для вычисления квадратного корня
+from collections import Counter
 
-def main(**kwargs):                 # создаем функцию, которая принимает любое количество именованных аргументов
-    for key in kwargs.items():      # проходим по всем парам (ключ,значение) в словаре kwargs
-        result = sqrt(key[1][0] ** 2 + key[1][1] ** 2)  # считаем длину вектора по формуле Пифагора
-        print(result)               # выводим полученное значение на экран
+check = [8734,2345,8201,6621,9999,1234,5678,8201,8888,4321,3365,
+1478,9865,5555,7777,9998,1111,2222,3333,4444,5556,6666,
+5410,7778,8889,4445,1439,9604,8201,3365,7502,3016,4928,
+5837,8201,2643,5017,9682,8530,3250,7193,9051,4506,1987,
+3365,5410,7168,7777,9865,5678,8201,4445,3016,4506,4506]
 
-if __name__ == '__main__':          # проверяем, что скрипт запускается напрямую, а не импортируется
-    start_time = datetime.now()     # фиксируем время начала работы программы
-    main(                           # вызываем функцию main с несколькими списками в качестве аргументов
-        one=[10, 3],
-        two=[5, 4],
-        three=[15, 13],
-        four=[93, 53],
-        five=[133, 15]
-    )
-    time_costs = datetime.now() - start_time   # определяем, сколько времени заняло выполнение программы
-    print(f"Время выполнения программы - {time_costs}")  # выводим продолжительность работы программы
+total_checks = len(check)
+unique_visitors = len(set(check))
+
+counter = Counter(check)
+most_common_code, maxcount = counter.most_common(1)[0]
+
+print("Всего чеков:", total_checks)
+print("Разных людей:", unique_visitors)
+print("Чаще всех приходил код:", most_common_code, "-", maxcount, "раз(а)")
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/samrab1.jpg)
@@ -296,21 +253,16 @@ if __name__ == '__main__':          # проверяем, что скрипт з
 ### Задание 2
 
 ``` git
-import random
+results = [10.2,14.8,19.3,22.7,12.5,33.1,38.9,21.6,26.4,17.1,30.2,35.7,16.9,
+           27.8,24.5,16.3,18.7,31.9,12.9,37.4]
+best_of_3 = sorted(results)[:3]
+worst_of_3 = sorted(results)[-3:]
+from_10 = results[10:]
 
-def cube():
-    value = random.randint(1, 6)
-    print(f"Выпавшее число - {value}")
-    
-    if value in (5, 6):
-        print("Вы победили")
-    elif value in (3, 4):
-        cube()
-    else:
-        print("Вы проиграли")
 
-if __name__ == "__main__":
-    cube()
+print("Три лучших результата:", best_of_3)
+print("Три худших результата:", worst_of_3)
+print("Результаты начиная с 10:", from_10)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/samrab2.jpg)
@@ -323,12 +275,24 @@ if __name__ == "__main__":
 ### Задание 3
 
 ``` git
-import time
-from datetime import datetime
+import math
 
-for i in range(5):
-    print(datetime.now().strftime("%H:%M:%S"))
-    time.sleep(1)                            
+one = [12, 25, 3, 48, 71]
+two = [5, 18, 40, 62, 98]
+three = [4, 21, 37, 56, 84]
+
+def triangle_area(x, y, z):
+    half_p = (x + y + z) / 2
+    return math.sqrt(max(0, half_p * (half_p - x) * (half_p - y) * (half_p - z)))
+
+sides_max = (max(one), max(two), max(three))
+sides_min = (min(one), min(two), min(three))
+
+area_max = triangle_area(*sides_max)
+area_min = triangle_area(*sides_min)
+
+print("Стороны (max):", sides_max, "Площадь: ", area_max)
+print("Стороны (min): ", sides_min, "Площадь:", area_min)                        
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/samrab3.jpg)
@@ -341,11 +305,25 @@ for i in range(5):
 ### Задание 4
 
 ``` git
-def average(*args):
-    return sum(args) / len(args)
+list_1 = [2,3,4,5,3,4,5,2,2,5,3,4,3,5,4]
+list_2 = [4,2,3,5,3,5,4,2,2,5,4,3,5,3,4]
+list_3 = [5,4,3,3,4,3,3,5,5,3,3,3,3,4,4]
 
-if __name__ == "__main__":
-    print("Среднее арифметическое - ", average(4, 12, 8, 1, 2))
+def update_marks(values):
+    result = []
+    for mark in values:
+        if mark == 2:
+            continue
+        result.append(4 if mark == 3 else mark)
+    return result
+
+fixed_1 = update_marks(list_1)
+fixed_2 = update_marks(list_2)
+fixed_3 = update_marks(list_3)
+
+print("Вариант 1:", fixed_1)
+print("Вариант 2:", fixed_2)
+print("Вариант 3:", fixed_3)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/samrab4.jpg)
@@ -358,23 +336,22 @@ if __name__ == "__main__":
 ### Задание 5
 
 ``` git
-import math
+def make_special_set(nums):
+    output = set()
+    for value in set(nums):
+        repeat = nums.count(value)
+        output.add(value)
+        for i in range(2, repeat + 1):
+            output.add(str(value) * i)
+    return output
 
-def f_heron(a, b, c):
-    p = (a + b + c) / 2
-    return math.sqrt(p * (p - a) * (p - b) * (p - c))
-```
+list_1 = [1, 1, 3, 3, 1]
+list_2 = [5, 5, 5, 5, 5, 5, 5]
+list_3 = [2, 2, 1, 2, 2, 5, 6, 7, 1, 3, 2, 2]
 
-``` git
-from triangle import f_heron
-
-if __name__ == "__main__":
-    a = float(input("Cторона a: "))
-    b = float(input("Сторона b: "))
-    c = float(input("Сторона c: "))
-    
-    area = f_heron(a, b, c)
-    print("Площадь треугольника равна - ", area)
+print(make_special_set(list_1))
+print(make_special_set(list_2))
+print(make_special_set(list_3))
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_5/pic/samrab5.jpg)
