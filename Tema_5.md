@@ -74,7 +74,7 @@ print(result)
 print(list(result))
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_6/pic/lab3.1.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_6/pic/lab3.jpg)
 
 ## Выводы
 Перестановку можно выполнить одной строкой с помощью множественного присваивания
