@@ -24,22 +24,8 @@
 ### Задание 1
 
 ``` git
-request = int(input('Введите номер кабинета: '))
-
-dictionary = {
-    101: {'key': 1234, 'access': True},
-    102: {'key': 1337, 'access': True},
-    103: {'key': 8943, 'access': True},
-    104: {'key': 5555, 'access': False},
-    None: {'key': None, 'access': False},
-}
-
-response = dictionary.get(request)
-if not response:
-    response = dictionary[None]
-key = response.get('key')
-access = response.get('access')
-print(key, access)
+Hello world!
+SoftwareEngineering
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab1.jpg)
@@ -52,15 +38,9 @@ print(key, access)
 ### Задание 2
 
 ``` git
-from pprint import pprint
-my_dict = {'first':'so easy'}
-
-def dict_maker(**kwargs):
-    my_dict.update(**kwargs)
-
-dict_maker(a1=1, a2=20, a3=54, a4=13)
-dict_maker(name='Владислав', age=20, weight=58, eyes_color='gray')
-pprint(my_dict)
+f = open('input1.txt','r')
+print(f.readline())
+f.close()
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab2.jpg)
@@ -73,10 +53,9 @@ pprint(my_dict)
 ### Задание 3
 
 ``` git
-input_string = 'HelloWorld'
-result=tuple(input_string)
-print(result)
-print(list(result))
+f = open('input1.txt','r')
+print(f.readlines())
+f.close()
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab3.jpg)
@@ -89,14 +68,8 @@ print(list(result))
 ### Задание 4
 
 ``` git
-def personal_info(name, age, company='unnamed'):
-    print(f"Имя: {name} Возраст: {age} Компания: {company}")
-
-tom = ("Григорий", 22)
-personal_info(*tom)
-
-bob = ("Георгий", 41, "Yandex")
-personal_info(*bob)
+with open('input1.txt') as f:
+    print(f.readlines())
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab4.jpg)
@@ -109,15 +82,9 @@ personal_info(*bob)
 ### Задание 5
 
 ``` git
-def tuple_sort(tpl):
-    for elm in tpl:
-        if not isinstance(elm, int):
-            return tpl
-    return tuple(sorted(tpl))
-
-if __name__ == '__main__':
-    print(tuple_sort((5,5,3,1,9)))
-    print(tuple_sort((5,5,2.1,'1',9)))
+with open('input1.txt') as f:
+    for line in f:
+        print(line)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab5.jpg)
@@ -130,22 +97,12 @@ if __name__ == '__main__':
 ### Задание 6
 
 ``` git
-request = int(input('Введите номер кабинета: '))
+with open('input1.txt', 'a+') as f:
+    f.write('\nIm additional line')
 
-dictionary = {
-    101: {'key': 1234, 'access': True},
-    102: {'key': 1337, 'access': True},
-    103: {'key': 8943, 'access': True},
-    104: {'key': 5555, 'access': False},
-    None: {'key': None, 'access': False},
-}
-
-response = dictionary.get(request)
-if not response:
-    response = dictionary[None]
-key = response.get('key')
-access = response.get('access')
-print(key, access)
+with open('input1.txt', 'r') as f:
+    result = f.readlines()
+    print(result)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab6.jpg)
@@ -158,15 +115,11 @@ print(key, access)
 ### Задание 7
 
 ``` git
-from pprint import pprint
-my_dict = {'first':'so easy'}
-
-def dict_maker(**kwargs):
-    my_dict.update(**kwargs)
-
-dict_maker(a1=1, a2=20, a3=54, a4=13)
-dict_maker(name='Владислав', age=20, weight=58, eyes_color='gray')
-pprint(my_dict)
+lines = ['one', 'two', 'three']
+with open('input1.txt', 'w') as f:
+    for line in lines:
+        f.write('\nCycle run ' + line)
+    print('Done!')
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab7.jpg)
@@ -179,10 +132,17 @@ pprint(my_dict)
 ### Задание 8
 
 ``` git
-input_string = 'HelloWorld'
-result=tuple(input_string)
-print(result)
-print(list(result))
+import os
+
+def print_docs(directory):
+    all_files = os.walk(directory)
+    for catalog in all_files:
+        print(f'Папка {catalog[0]} содержит: ')
+    print(f'Директории: {", ".join([folder for folder in catalog[1]])}')
+    print(f'Файлы: {", ".join([file for file in catalog[2]])}')
+    print('-'*40)
+
+print_docs('D:/учеба/3_курс/Программная_инжинерия/Лаб_7/py')
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab8.jpg)
@@ -195,14 +155,19 @@ print(list(result))
 ### Задание 9
 
 ``` git
-def personal_info(name, age, company='unnamed'):
-    print(f"Имя: {name} Возраст: {age} Компания: {company}")
+def longest_words(file):
+    with open(file, encoding='utf-8') as f:
+        words = f.read().split()
+        max_length = len(max(words, key=len))
+        for word in words:
+            if len(word) == max_length:
+                sought_words = word
 
-tom = ("Григорий", 22)
-personal_info(*tom)
+        if len(sought_words) == 1:
+            return sought_words[0]
+        return sought_words
 
-bob = ("Георгий", 41, "Yandex")
-personal_info(*bob)
+print(longest_words('input.txt'))
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab9.jpg)
@@ -215,15 +180,16 @@ personal_info(*bob)
 ### Задание 10
 
 ``` git
-def tuple_sort(tpl):
-    for elm in tpl:
-        if not isinstance(elm, int):
-            return tpl
-    return tuple(sorted(tpl))
+import csv
+import datetime
+import time
 
-if __name__ == '__main__':
-    print(tuple_sort((5,5,3,1,9)))
-    print(tuple_sort((5,5,2.1,'1',9)))
+with open('rows_300.csv', 'w', encoding='utf-8', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(['№', 'Секунда', 'Микросекунда'])
+    for line in range(1, 301):
+        writer.writerow([line, datetime.datetime.now().second, datetime.datetime.now().microsecond])
+    time.sleep(0.01)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab10.jpg)
@@ -237,20 +203,16 @@ if __name__ == '__main__':
 ### Задание 1
 
 ``` git
-def list_and_tuple(text):
-    nums = []
-    for part in text.split(','):
-        part = part.strip()
-        if part.isdigit():
-            nums.append(int(part))
-    return nums, tuple(nums)
+from collections import Counter
 
-if __name__ == '__main__':
-    s = "1, 2, 3, 4, 5"
-    lst, tpl = list_and_tuple(s)
-    print("Изначальная строка -> ", s)
-    print("Список -> ", lst)
-    print("Кортеж -> ", tpl)
+with open("article.txt", encoding="utf-8") as f:
+    text = f.read().lower().split()
+
+word_count = len(text)
+most_common = Counter(text).most_common(1)[0]
+
+print(f"Количество слов: {word_count}")
+print(f"Самое частое слово: '{most_common[0]}' — встречается {most_common[1]} раз(а)")
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/samrab1.jpg)
@@ -263,23 +225,23 @@ if __name__ == '__main__':
 ### Задание 2
 
 ``` git
-def remove_first_element(tpl, value):
-    if value not in tpl:
-        return tpl
-    index = tpl.index(value)
-    return tpl[:index] + tpl[index + 1:]
+def append_record(file_path):
+    cat = input("Введите категорию: ")
+    cost = float(input("Введите сумму: "))
+    comment = input("Добавьте комментарий: ")
+    with open(file_path, "a", encoding="utf-8") as file:
+        file.write(f"{cat},{cost},{comment}\n")
 
-if __name__ == '__main__':
-    examples = [
-        ((1, 2, 3), 1),
-        ((1, 2, 3, 1, 2, 3, 4, 5, 2, 3, 4, 2, 4, 2), 3),
-        ((2, 4, 6, 6, 4, 2), 9)
-    ]
+def display_records(file_path):
+    with open(file_path, encoding="utf-8") as file:
+        for record in file:
+            cat, cost, comment = record.rstrip().split(",")
+            print(f"{cat}: {cost} руб. — {comment}")
 
-    for tpl, val in examples:
-        print("Изначальный кортеж -> ", tpl, "Удалить -> ", val)
-        res = remove_first_element(tpl, val)
-        print("Результат -> ", res)
+if __name__ == "__main__":
+    append_record("expenses.txt")
+    print("\nСписок расходов:")
+    display_records("expenses.txt")
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/samrab2.jpg)
@@ -292,34 +254,18 @@ if __name__ == '__main__':
 ### Задание 3
 
 ``` git
-def get_digit_counts(text):
-    counts = {}
-    for ch in text:
-        if ch.isdigit():
-            num = int(ch)
-            counts[num] = counts.get(num, 0) + 1
-    return counts
+with open("input.txt", encoding="utf-8") as f:
+    lines = f.readlines()
 
+text = "".join(lines)
+letters = sum(ch.isalpha() for ch in text)
+words = len(text.split())
+lines_count = len(lines)
 
-def top3_digits(text):
-    counts = get_digit_counts(text)
-    if not counts:
-        return {}
-
-    sorted_items = sorted(counts.items(), key=lambda x: (-x[1], x[0]))
-    top = sorted_items[:3]
-    return dict(sorted(top))
-
-
-if __name__ == '__main__':
-    s = "987654321098765432109876543210987654"
-    s2 = "000111222333444555666777888999000111222"
-
-    all_counts = get_digit_counts(s2)
-    top3 = top3_digits(s2)
-
-    print("Cловарь -> ", all_counts)
-    print("3 самых частых -> ", top3)           
+print("Input file contains:")
+print(f"{letters} letters")
+print(f"{words} words")
+print(f"{lines_count} lines")
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/samrab3.jpg)
@@ -333,19 +279,18 @@ if __name__ == '__main__':
 ### Задание 4
 
 ``` git
-def first_to_second(tpl, value):
-    if value not in tpl:
-        return ()
-    first = tpl.index(value)
-    if value not in tpl[first + 1:]:
-        return tpl[first:]
-    second = tpl.index(value, first + 1)
-    return tpl[first:second + 1]
+import re
 
-if __name__ == '__main__':
-    print(first_to_second((1, 2, 3), 8))
-    print(first_to_second((1, 8, 3, 4, 8, 9, 2), 8))
-    print(first_to_second((1, 2, 8, 5, 1, 2, 9), 8))
+with open("input.txt", encoding="utf-8") as file:
+    forbidden = file.read().split()
+
+sample_text = "Приветствие, Спасибо, Ты готов? До завтра! Вчера было тепло"
+
+for term in forbidden:
+    mask = re.compile(term, re.IGNORECASE)
+    sample_text = mask.sub("*" * len(term), sample_text)
+
+print(sample_text)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/samrab4.jpg)
@@ -358,23 +303,26 @@ if __name__ == '__main__':
 ### Задание 5
 
 ``` git
-from collections import Counter
+import os
 
-def get_at_least_three(lst):
-    counts = Counter(lst)
-    seen = set()
-    res = []
-    for x in lst:
-        if counts[x] >= 3 and x not in seen:
-            res.append(x)
-            seen.add(x)
-    return tuple(res)
+def add_task():
+    task = input("Введите новую задачу: ")
+    with open("tasks.txt", "a", encoding="utf-8") as file:
+        file.write(task + "\n")
 
-if __name__ == '__main__':
-    print(get_at_least_three([1, 2, 3, 2, 1, 1, 2, 4]))
-    print(get_at_least_three([7, 7, 7, 7]))
-    print(get_at_least_three([1, 2, 3, 4]))
-    print(get_at_least_three(['x','x','x','y','y','y','z']))
+def show_tasks():
+    if not os.path.exists("tasks.txt"):
+        print("Список задач пока пуст.")
+        return
+    with open("tasks.txt", encoding="utf-8") as file:
+        tasks = [line.strip() for line in file if line.strip()]
+    print("\nВаши задачи:")
+    for num, task in enumerate(tasks, 1):
+        print(f"{num}. {task}")
+
+if __name__ == "__main__":
+    add_task()
+    show_tasks()
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/samrab5.jpg)
