@@ -1,5 +1,5 @@
-# Тема 6. Базовые коллекции: словари, кортежи
-Отчет по Теме #6 выполнил:
+# Тема 7. Базовые коллекции: словари, кортежи
+Отчет по Теме #7 выполнил:
 - Червяков Владислав Максимович 
 - ПИЭ-23-2
 
@@ -10,12 +10,17 @@
 | Задание 3 | + | + |
 | Задание 4 | + | + |
 | Задание 5 | + | + |
+| Задание 6 | + |   |
+| Задание 7 | + |   |
+| Задание 8 | + |   |
+| Задание 9 | + |   |
+| Задание 10 | + |   |
 
 знак "+" - задание выполнено; знак "-" - задание не выполнено;
 
 ---
 
-## Лабораторная работа №6
+## Лабораторная работа №7
 ### Задание 1
 
 ``` git
@@ -37,7 +42,7 @@ access = response.get('access')
 print(key, access)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_6/pic/lab1.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab1.jpg)
 
 ## Выводы
 Словари позволяют удобно обращаться к элементам по ключу, заменяя конструкции if/elif/else
@@ -58,7 +63,7 @@ dict_maker(name='Владислав', age=20, weight=58, eyes_color='gray')
 pprint(my_dict)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_6/pic/lab2.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab2.jpg)
 
 ## Выводы
 С помощью функций и **kwargs можно динамически создавать словари, а pprint обеспечивает удобный вывод информации
@@ -74,7 +79,7 @@ print(result)
 print(list(result))
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_6/pic/lab3.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab3.jpg)
 
 ## Выводы
 С помощью tuple можно разложить строку по символам без использования условий
@@ -94,7 +99,7 @@ bob = ("Георгий", 41, "Yandex")
 personal_info(*bob)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_6/pic/lab4.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab4.jpg)
 
 ## Выводы
 В качестве аргумента функции можно передавать кортеж
@@ -115,14 +120,120 @@ if __name__ == '__main__':
     print(tuple_sort((5,5,2.1,'1',9)))
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_6/pic/lab5.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab5.jpg)
 
 ## Выводы
 Кортеж можно сортировать и проверять каждый его элемент
 
 ---
 
-## Самостоятельная работа №6
+### Задание 6
+
+``` git
+request = int(input('Введите номер кабинета: '))
+
+dictionary = {
+    101: {'key': 1234, 'access': True},
+    102: {'key': 1337, 'access': True},
+    103: {'key': 8943, 'access': True},
+    104: {'key': 5555, 'access': False},
+    None: {'key': None, 'access': False},
+}
+
+response = dictionary.get(request)
+if not response:
+    response = dictionary[None]
+key = response.get('key')
+access = response.get('access')
+print(key, access)
+```
+### Результат.
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab6.jpg)
+
+## Выводы
+Словари позволяют удобно обращаться к элементам по ключу, заменяя конструкции if/elif/else
+
+---
+
+### Задание 7
+
+``` git
+from pprint import pprint
+my_dict = {'first':'so easy'}
+
+def dict_maker(**kwargs):
+    my_dict.update(**kwargs)
+
+dict_maker(a1=1, a2=20, a3=54, a4=13)
+dict_maker(name='Владислав', age=20, weight=58, eyes_color='gray')
+pprint(my_dict)
+```
+### Результат.
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab7.jpg)
+
+## Выводы
+С помощью функций и **kwargs можно динамически создавать словари, а pprint обеспечивает удобный вывод информации
+
+---
+
+### Задание 8
+
+``` git
+input_string = 'HelloWorld'
+result=tuple(input_string)
+print(result)
+print(list(result))
+```
+### Результат.
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab8.jpg)
+
+## Выводы
+С помощью tuple можно разложить строку по символам без использования условий
+
+---
+
+### Задание 9
+
+``` git
+def personal_info(name, age, company='unnamed'):
+    print(f"Имя: {name} Возраст: {age} Компания: {company}")
+
+tom = ("Григорий", 22)
+personal_info(*tom)
+
+bob = ("Георгий", 41, "Yandex")
+personal_info(*bob)
+```
+### Результат.
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab9.jpg)
+
+## Выводы
+В качестве аргумента функции можно передавать кортеж
+
+---
+
+### Задание 10
+
+``` git
+def tuple_sort(tpl):
+    for elm in tpl:
+        if not isinstance(elm, int):
+            return tpl
+    return tuple(sorted(tpl))
+
+if __name__ == '__main__':
+    print(tuple_sort((5,5,3,1,9)))
+    print(tuple_sort((5,5,2.1,'1',9)))
+```
+### Результат.
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/lab10.jpg)
+
+## Выводы
+Кортеж можно сортировать и проверять каждый его элемент
+
+---
+
+## Самостоятельная работа №7
 ### Задание 1
 
 ``` git
@@ -142,7 +253,7 @@ if __name__ == '__main__':
     print("Кортеж -> ", tpl)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_6/pic/samrab1.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/samrab1.jpg)
 
 ## Выводы
 Простая и надёжная функция вручную разбивает строку, преобразует элементы в целые числа и возвращает список и кортеж, корректно обрабатывая пробелы и пустые токены
@@ -171,7 +282,7 @@ if __name__ == '__main__':
         print("Результат -> ", res)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_6/pic/samrab2.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/samrab2.jpg)
 
 ## Выводы
 Функция удаляет первое найденное вхождение, при этом кортеж остаётся неизменяемым — создаётся новый. Если элемент отсутствует, возвращается исходный кортеж
@@ -211,7 +322,7 @@ if __name__ == '__main__':
     print("3 самых частых -> ", top3)           
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_6/pic/samrab3.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/samrab3.jpg)
 
 ## Выводы
 Для выбора трёх наиболее частых элементов используется алгоритм, выбирающий максимум три раза
@@ -237,7 +348,7 @@ if __name__ == '__main__':
     print(first_to_second((1, 2, 8, 5, 1, 2, 9), 8))
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_6/pic/samrab4.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/samrab4.jpg)
 
 ## Выводы
 Функция правильно обрабатывает все три случая: 0, 1 и ≥2 вхождения
@@ -266,7 +377,7 @@ if __name__ == '__main__':
     print(get_at_least_three(['x','x','x','y','y','y','z']))
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_6/pic/samrab5.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_7/pic/samrab5.jpg)
 
 ## Выводы
 Задача проверяет корректность подсчёта и сохранения порядка первого появления элементов
