@@ -19,8 +19,12 @@
 ### Задание 1
 
 ``` git
-Hello world!
-SoftwareEngineering
+class Car:
+    def __init__(self, make, model):#функция инициализации 
+        self.make = make #марка авто
+        self.model = model #модель авто
+
+my_car = Car("Toyota", "Corolla") #создание объекта
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab1.jpg)
@@ -33,9 +37,16 @@ SoftwareEngineering
 ### Задание 2
 
 ``` git
-f = open('input1.txt','r')
-print(f.readline())
-f.close()
+class Car:
+    def __init__(self, make, model): #функция инициализации 
+        self.make = make #марка авто
+        self.model = model #модель авто
+    
+    def drive(self):
+        print(f"Driving the {self.make} {self.model}")
+
+my_car = Car("Toyota", "Corolla") #создание объекта
+my_car.drive()
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab2.jpg)
@@ -48,9 +59,28 @@ f.close()
 ### Задание 3
 
 ``` git
-f = open('input1.txt','r')
-print(f.readlines())
-f.close()
+class Car:
+    def __init__(self, make, model): #функция инициализации 
+        self.make = make #марка авто
+        self.model = model #модель авто
+    
+    def drive(self):
+        print(f"Driving the {self.make} {self.model}")
+
+my_car = Car("Toyota", "Corolla") #создание объекта
+my_car.drive()
+
+class ElectricCar(Car):
+    def __init__(self, make, model, battery_capacity):
+        super().__init__(make, model)
+        self.battery_capacity = battery_capacity
+    
+    def charge(self):
+        print(f"Chatging the {self.make} {self.model} with {self.battery_capacity} kWh")
+
+my_electric_car = ElectricCar("Tesla", "Model S", 75)
+my_electric_car.drive()
+my_electric_car.charge()
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab3.jpg)
@@ -63,8 +93,29 @@ f.close()
 ### Задание 4
 
 ``` git
-with open('input1.txt') as f:
-    print(f.readlines())
+class Car:
+    def __init__(self, make, model): #функция инициализации 
+        self._make = make #марка авто
+        self.__model = model #модель авто
+    
+    def drive(self):
+        print(f"Driving the {self.make} {self.model}")
+
+my_car = Car("Toyota", "Corolla") #создание объекта
+print(my_car._make)
+my_car.drive()
+
+class ElectricCar(Car):
+    def __init__(self, make, model, battery_capacity):
+        super().__init__(make, model)
+        self.battery_capacity = battery_capacity
+    
+    def charge(self):
+        print(f"Chatging the {self.make} {self.model} with {self.battery_capacity} kWh")
+
+my_electric_car = ElectricCar("Tesla", "Model S", 75)
+my_electric_car.drive()
+my_electric_car.charge()
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab4.jpg)
@@ -77,9 +128,32 @@ with open('input1.txt') as f:
 ### Задание 5
 
 ``` git
-with open('input1.txt') as f:
-    for line in f:
-        print(line)
+class Shape:
+    def area(self):
+        pass
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    
+    def area(self):
+        return self.width * self.height
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius * self.radius
+
+rect = Rectangle(5, 10)
+circle = Circle(7)
+
+shapes = [rect, circle]
+
+for shape in shapes:
+    print("Площадь фигуры:", shape.area())
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab5.jpg)
@@ -93,16 +167,23 @@ with open('input1.txt') as f:
 ### Задание 1
 
 ``` git
-from collections import Counter
+class Book:
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
 
-with open("article.txt", encoding="utf-8") as f:
-    text = f.read().lower().split()
+    def description(self):
+        return f"Книга '{self.title}' написана {self.author} и содержит {self.pages} страниц."
 
-word_count = len(text)
-most_common = Counter(text).most_common(1)[0]
+    def is_long(self):
+        return self.pages > 300
 
-print(f"Количество слов: {word_count}")
-print(f"Самое частое слово: '{most_common[0]}' — встречается {most_common[1]} раз(а)")
+
+my_book = Book("Мастер и Маргарита", "Михаил Булгаков", 384)
+
+print(my_book.description())
+print("Это длинная книга." if my_book.is_long() else "Это короткая книга.")
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab1.jpg)
@@ -115,23 +196,32 @@ print(f"Самое частое слово: '{most_common[0]}' — встреч�
 ### Задание 2
 
 ``` git
-def append_record(file_path):
-    cat = input("Введите категорию: ")
-    cost = float(input("Введите сумму: "))
-    comment = input("Добавьте комментарий: ")
-    with open(file_path, "a", encoding="utf-8") as file:
-        file.write(f"{cat},{cost},{comment}\n")
+class Book:
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+        self.current_page = 0
 
-def display_records(file_path):
-    with open(file_path, encoding="utf-8") as file:
-        for record in file:
-            cat, cost, comment = record.rstrip().split(",")
-            print(f"{cat}: {cost} руб. — {comment}")
+    def description(self):
+        return f"Книга '{self.title}' написана {self.author} и содержит {self.pages} страниц."
 
-if __name__ == "__main__":
-    append_record("expenses.txt")
-    print("\nСписок расходов:")
-    display_records("expenses.txt")
+    def is_long(self):
+        return self.pages > 300
+
+    def read(self, pages):
+        self.current_page += pages
+        if self.current_page > self.pages:
+            self.current_page = self.pages
+        return f"Сейчас вы на странице {self.current_page}."
+
+
+my_book = Book("Мастер и Маргарита", "Михаил Булгаков", 384)
+
+print(my_book.description())
+print("Это длинная книга." if my_book.is_long() else "Это короткая книга.")
+print(my_book.read(50))
+print(my_book.read(100))
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab2.jpg)
@@ -144,18 +234,50 @@ if __name__ == "__main__":
 ### Задание 3
 
 ``` git
-with open("input.txt", encoding="utf-8") as f:
-    lines = f.readlines()
+class Book:
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+        self.current_page = 0
 
-text = "".join(lines)
-letters = sum(ch.isalpha() for ch in text)
-words = len(text.split())
-lines_count = len(lines)
+    def description(self):
+        return f"Книга '{self.title}' написана {self.author} и содержит {self.pages} страниц."
 
-print("Input file contains:")
-print(f"{letters} letters")
-print(f"{words} words")
-print(f"{lines_count} lines")
+    def is_long(self):
+        return self.pages > 300
+
+    def read(self, pages):
+        self.current_page += pages
+        if self.current_page > self.pages:
+            self.current_page = self.pages
+        return f"Сейчас вы на странице {self.current_page}."
+
+class AudioBook(Book):
+    def __init__(self, title, author, pages, duration_minutes):
+        super().__init__(title, author, pages)
+        self.duration_minutes = duration_minutes
+        self.current_minute = 0
+
+    def listen(self, minutes):
+        self.current_minute += minutes
+        if self.current_minute > self.duration_minutes:
+            self.current_minute = self.duration_minutes
+        return f"Вы прослушали {self.current_minute} из {self.duration_minutes} минут аудиокниги."
+
+    def description(self):
+        return f"Аудиокнига '{self.title}' автора {self.author}, длительность: {self.duration_minutes} минут."
+
+paper_book = Book("Мастер и Маргарита", "Михаил Булгаков", 384)
+audio_book = AudioBook("Мастер и Маргарита", "Михаил Булгаков", 384, 720)
+
+print(paper_book.description())
+print(paper_book.read(50))
+print(paper_book.is_long())
+
+print(audio_book.description())
+print(audio_book.listen(120))
+print(audio_book.listen(300))
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab3.jpg)
@@ -168,18 +290,42 @@ print(f"{lines_count} lines")
 ### Задание 4
 
 ``` git
-import re
+class Book:
+    def __init__(self, title, author, pages):
+        self.__title = title
+        self.__author = author
+        self.__pages = pages
+        self.__current_page = 0
 
-with open("input.txt", encoding="utf-8") as file:
-    forbidden = file.read().split()
+    def description(self):
+        return f"Книга '{self.__title}' написана {self.__author} и содержит {self.__pages} страниц."
 
-sample_text = "Приветствие, Спасибо, Ты готов? До завтра! Вчера было тепло"
+    def read(self, pages):
+        if pages < 0:
+            return "Невозможно прочитать отрицательное количество страниц."
+        self.__current_page += pages
+        if self.__current_page > self.__pages:
+            self.__current_page = self.__pages
+        return f"Сейчас вы на странице {self.__current_page}."
 
-for term in forbidden:
-    mask = re.compile(term, re.IGNORECASE)
-    sample_text = mask.sub("*" * len(term), sample_text)
+    def get_current_page(self):
+        return self.__current_page
 
-print(sample_text)
+    def set_current_page(self, page):
+        if 0 <= page <= self.__pages:
+            self.__current_page = page
+            return f"Страница установлена на {self.__current_page}."
+        else:
+            return "Недопустимый номер страницы."
+
+my_book = Book("Мастер и Маргарита", "Михаил Булгаков", 384)
+
+print(my_book.description())
+print(my_book.read(50))
+print(my_book.get_current_page())
+print(my_book.set_current_page(200))
+print(my_book.get_current_page())
+print(my_book.set_current_page(500))
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab4.jpg)
@@ -192,26 +338,27 @@ print(sample_text)
 ### Задание 5
 
 ``` git
-import os
+class Vehicle:
+    def move(self):
+        pass
 
-def add_task():
-    task = input("Введите новую задачу: ")
-    with open("tasks.txt", "a", encoding="utf-8") as file:
-        file.write(task + "\n")
+class Car(Vehicle):
+    def move(self):
+        return "Машина едет по дороге."
 
-def show_tasks():
-    if not os.path.exists("tasks.txt"):
-        print("Список задач пока пуст.")
-        return
-    with open("tasks.txt", encoding="utf-8") as file:
-        tasks = [line.strip() for line in file if line.strip()]
-    print("\nВаши задачи:")
-    for num, task in enumerate(tasks, 1):
-        print(f"{num}. {task}")
+class Boat(Vehicle):
+    def move(self):
+        return "Лодка плывёт по воде."
 
-if __name__ == "__main__":
-    add_task()
-    show_tasks()
+class Plane(Vehicle):
+    def move(self):
+        return "Самолёт летит в небе."
+
+
+transport = [Car(), Boat(), Plane()]
+
+for t in transport:
+    print(t.move())
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab5.jpg)
