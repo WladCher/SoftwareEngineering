@@ -1,4 +1,4 @@
-# Тема 9. Введение в ООП
+# Тема 9. Концепции и принципы ООП
 Отчет по Теме #9 выполнил:
 - Червяков Владислав Максимович 
 - ПИЭ-23-2
@@ -19,147 +19,149 @@
 ### Задание 1
 
 ``` git
-class Car:
-    def __init__(self, make, model):#функция инициализации 
-        self.make = make #марка авто
-        self.model = model #модель авто
+class Vlad:
+    __slots__ = ['name']
 
-my_car = Car("Toyota", "Corolla") #создание объекта
+    def __init__(self, name):
+        if name == 'Влад':
+            self.name = f"Да, я {name}"
+        else:
+            self.name = f"Я не {name}, а Влад"
+
+person1 = Vlad('Влад')
+person2 = Vlad('Евгений')
+print(person1.name)
+print(person2.name)
+
+person2.surname = 'Петров'
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab1.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_9/pic/lab1.jpg)
 
 ## Выводы
-С помощью class можно создать класс и выполнить его инициализацию
+Создание класса с помощью class позволяет описывать собственные типы данных с заданными свойствами и поведением. Использование __slots__ ограничивает набор допустимых атрибутов и предотвращает создание несуществующих свойств (например, surname). Это делает класс более структурированным и помогает контролировать допустимые поля объекта.
 
 ---
 
 ### Задание 2
 
 ``` git
-class Car:
-    def __init__(self, make, model): #функция инициализации 
-        self.make = make #марка авто
-        self.model = model #модель авто
-    
-    def drive(self):
-        print(f"Driving the {self.make} {self.model}")
+class Icecream:
+    def __init__(self, ingredient=None):
+        if isinstance(ingredient, str):
+            self.ingredient = ingredient
+        else:
+            self.ingredient = None
 
-my_car = Car("Toyota", "Corolla") #создание объекта
-my_car.drive()
+    def composition(self):
+        if self.ingredient:
+            print(f"Мороженое с {self.ingredient}")
+        else:
+            print('Обычное мороженое')
+
+icecream = Icecream()
+icecream.composition()
+icecream = Icecream("шоколадом")
+icecream.composition()
+icecream = Icecream(5)
+icecream.composition()
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab2.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_9/pic/lab2.jpg)
 
 ## Выводы
-Внутри класса можно определять атрибуты и методы
+Внутри класса можно задавать атрибуты и методы, которые управляют состоянием объекта. Проверка типа с помощью isinstance обеспечивает более надёжное выполнение операций. Такой подход отражает принцип инкапсуляции — объединение данных и поведения внутри одного объекта.
 
 ---
 
 ### Задание 3
 
 ``` git
-class Car:
-    def __init__(self, make, model): #функция инициализации 
-        self.make = make #марка авто
-        self.model = model #модель авто
+class MyClass:
+    def __init__(self, value):
+        self._value = value
     
-    def drive(self):
-        print(f"Driving the {self.make} {self.model}")
-
-my_car = Car("Toyota", "Corolla") #создание объекта
-my_car.drive()
-
-class ElectricCar(Car):
-    def __init__(self, make, model, battery_capacity):
-        super().__init__(make, model)
-        self.battery_capacity = battery_capacity
+    def set_value(self, value):
+        self._value = value
     
-    def charge(self):
-        print(f"Chatging the {self.make} {self.model} with {self.battery_capacity} kWh")
+    def get_value(self):
+        return self._value
+    
+    def del_value(self):
+        del self._value
 
-my_electric_car = ElectricCar("Tesla", "Model S", 75)
-my_electric_car.drive()
-my_electric_car.charge()
+    value = property(get_value,set_value,del_value, "Свойство value")
+
+obj = MyClass(42)
+print(obj.get_value())
+obj.set_value(45)
+print(obj.get_value())
+obj.set_value(100)
+print(obj.get_value())
+obj.del_value()
+print(obj.get_value())
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab3.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_9/pic/lab3.jpg)
 
 ## Выводы
-Классы можно наследовать, указывая родительский класс в скобках: class Class1(РодительскийКласс)
+Здесь показано применение инкапсуляции и свойств (getter, setter, deleter) с использованием property. Такой механизм позволяет контролировать доступ к приватным данным и управлять изменением их значений. Ошибка при обращении к удалённому атрибуту _value демонстрирует важность аккуратного обращения с внутренним состоянием объекта.
 
 ---
 
 ### Задание 4
 
 ``` git
-class Car:
-    def __init__(self, make, model): #функция инициализации 
-        self._make = make #марка авто
-        self.__model = model #модель авто
-    
-    def drive(self):
-        print(f"Driving the {self.make} {self.model}")
+class Mammal:
+    className = 'Mammal'
 
-my_car = Car("Toyota", "Corolla") #создание объекта
-print(my_car._make)
-my_car.drive()
+class Dog(Mammal):
+    species = 'canine'
+    sounds = 'wow'
 
-class ElectricCar(Car):
-    def __init__(self, make, model, battery_capacity):
-        super().__init__(make, model)
-        self.battery_capacity = battery_capacity
-    
-    def charge(self):
-        print(f"Chatging the {self.make} {self.model} with {self.battery_capacity} kWh")
+class Cat(Mammal):
+    species = 'feline'
+    sounds = 'meow'
 
-my_electric_car = ElectricCar("Tesla", "Model S", 75)
-my_electric_car.drive()
-my_electric_car.charge()
+dog = Dog()
+print(f"Dog is {dog.className}, but they say {dog.sounds}")
+cat = Cat()
+print(f"cat is {cat.className}, but they say {cat.sounds}")
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab4.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_9/pic/lab4.jpg)
 
 ## Выводы
-Инкапсуляция с использованием _ или __ определяет уровень доступа к атрибуту
+В этом задании показано наследование — принцип, при котором дочерние классы (Dog, Cat) получают свойства и методы родительского (Mammal). Такой подход делает код компактным, упрощает повторное использование и расширение функциональности. Уникальные атрибуты подклассов иллюстрируют специализацию объектов.
 
 ---
 
 ### Задание 5
 
 ``` git
-class Shape:
-    def area(self):
-        pass
+class Russian:
+    @staticmethod
+    def greeting():
+        print("Привет")
 
-class Rectangle(Shape):
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-    
-    def area(self):
-        return self.width * self.height
+class English:
+    @staticmethod
+    def greeting():
+        print("Hello")
 
-class Circle(Shape):
-    def __init__(self, radius):
-        self.radius = radius
+def greet(language):
+    language.greeting()
 
-    def area(self):
-        return 3.14 * self.radius * self.radius
-
-rect = Rectangle(5, 10)
-circle = Circle(7)
-
-shapes = [rect, circle]
-
-for shape in shapes:
-    print("Площадь фигуры:", shape.area())
+ivan = Russian()
+greet(ivan)
+john = English()
+greet(john)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab5.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_9/pic/lab5.jpg)
 
 ## Выводы
-Каждую строку можно выводить отдельно с помощью цикла
+Пример демонстрирует полиморфизм — возможность вызывать один и тот же метод (greet(language)) у разных классов (Russian, English), получая при этом различное поведение. Такой подход делает код более гибким, универсальным и удобным для расширения.
 
 ---
 
@@ -167,207 +169,144 @@ for shape in shapes:
 ### Задание 1
 
 ``` git
-class Book:
-    def __init__(self, title, author, pages):
-        self.title = title
-        self.author = author
-        self.pages = pages
+class Tomato:
+    # стадии созревания (статическое свойство)
+    states = {0: 'отсутствует', 1: 'цветение', 2: 'зелёный', 3: 'красный'}
 
-    def description(self):
-        return f"Книга '{self.title}' написана {self.author} и содержит {self.pages} страниц."
+    def __init__(self, index: int):
+        # _index — номер томата (приватное)
+        # _state — стадия созревания (приватное)
+        self._index = index
+        self._state = 0  # первая стадия
 
-    def is_long(self):
-        return self.pages > 300
+    def grow(self):
+        # перевод томата на следующую стадию
+        if self._state < max(Tomato.states.keys()):
+            self._state += 1
+        print(f"Томат {self._index} теперь {Tomato.states[self._state]}")
 
-
-my_book = Book("Мастер и Маргарита", "Михаил Булгаков", 384)
-
-print(my_book.description())
-print("Это длинная книга." if my_book.is_long() else "Это короткая книга.")
-```
-### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab1.jpg)
-
-## Выводы
-Создан класс Book с полями для названия, автора и количества страниц, а также методами description(), который выводит информацию о книге, и is_long(), проверяющим, является ли книга длинной
-
----
-
-### Задание 2
-
-``` git
-class Book:
-    def __init__(self, title, author, pages):
-        self.title = title
-        self.author = author
-        self.pages = pages
-        self.current_page = 0
-
-    def description(self):
-        return f"Книга '{self.title}' написана {self.author} и содержит {self.pages} страниц."
-
-    def is_long(self):
-        return self.pages > 300
-
-    def read(self, pages):
-        self.current_page += pages
-        if self.current_page > self.pages:
-            self.current_page = self.pages
-        return f"Сейчас вы на странице {self.current_page}."
+    def is_ripe(self):
+        # проверка, что томат созрел
+        return self._state == max(Tomato.states.keys())
 
 
-my_book = Book("Мастер и Маргарита", "Михаил Булгаков", 384)
+class TomatoBush:
+    def __init__(self, count: int):
+        # список томатов
+        self.tomatoes = [Tomato(i) for i in range(1, count + 1)]
 
-print(my_book.description())
-print("Это длинная книга." if my_book.is_long() else "Это короткая книга.")
-print(my_book.read(50))
-print(my_book.read(100))
-```
-### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab2.jpg)
+    def grow_all(self):
+        print("\nКуст растёт")
+        for t in self.tomatoes:
+            t.grow()
 
-## Выводы
-Создан класс Book с полями для названия, автора и количества страниц, добавлен атрибут current_page для отслеживания прогресса чтения, а также методы description() для вывода информации о книге, is_long() для проверки длины книги и read(pages) для "чтения" определённого количества страниц
+    def all_are_ripe(self):
+        # проверка, что все томаты спелые
+        return all(t.is_ripe() for t in self.tomatoes) if self.tomatoes else False
 
----
+    def give_away_all(self):
+        # сбор урожая
+        self.tomatoes.clear()
+        print("Урожай собран, куст пуст")
 
-### Задание 3
 
-``` git
-class Book:
-    def __init__(self, title, author, pages):
-        self.title = title
-        self.author = author
-        self.pages = pages
-        self.current_page = 0
+class Gardener:
+    def __init__(self, name: str, plant: TomatoBush):
+        # name — имя садовника (публичное)
+        # _plant — куст (приватное)
+        self.name = name
+        self._plant = plant
 
-    def description(self):
-        return f"Книга '{self.title}' написана {self.author} и содержит {self.pages} страниц."
+    def work(self):
+        print(f"\n{self.name} ухаживает за растением")
+        self._plant.grow_all()
+        print(f"{self.name} закончил уход")
 
-    def is_long(self):
-        return self.pages > 300
-
-    def read(self, pages):
-        self.current_page += pages
-        if self.current_page > self.pages:
-            self.current_page = self.pages
-        return f"Сейчас вы на странице {self.current_page}."
-
-class AudioBook(Book):
-    def __init__(self, title, author, pages, duration_minutes):
-        super().__init__(title, author, pages)
-        self.duration_minutes = duration_minutes
-        self.current_minute = 0
-
-    def listen(self, minutes):
-        self.current_minute += minutes
-        if self.current_minute > self.duration_minutes:
-            self.current_minute = self.duration_minutes
-        return f"Вы прослушали {self.current_minute} из {self.duration_minutes} минут аудиокниги."
-
-    def description(self):
-        return f"Аудиокнига '{self.title}' автора {self.author}, длительность: {self.duration_minutes} минут."
-
-paper_book = Book("Мастер и Маргарита", "Михаил Булгаков", 384)
-audio_book = AudioBook("Мастер и Маргарита", "Михаил Булгаков", 384, 720)
-
-print(paper_book.description())
-print(paper_book.read(50))
-print(paper_book.is_long())
-
-print(audio_book.description())
-print(audio_book.listen(120))
-print(audio_book.listen(300))
-```
-### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab3.jpg)
-
-## Выводы
-Созданы классы Book и AudioBook, где AudioBook наследует Book и добавляет поля для длительности и прогресса прослушивания. Реализованы методы description() для вывода информации, read(pages) для чтения страниц и listen(minutes) для прослушивания аудиокниги, демонстрируя наследование и расширение функционала
-
----
-
-### Задание 4
-
-``` git
-class Book:
-    def __init__(self, title, author, pages):
-        self.__title = title
-        self.__author = author
-        self.__pages = pages
-        self.__current_page = 0
-
-    def description(self):
-        return f"Книга '{self.__title}' написана {self.__author} и содержит {self.__pages} страниц."
-
-    def read(self, pages):
-        if pages < 0:
-            return "Невозможно прочитать отрицательное количество страниц."
-        self.__current_page += pages
-        if self.__current_page > self.__pages:
-            self.__current_page = self.__pages
-        return f"Сейчас вы на странице {self.__current_page}."
-
-    def get_current_page(self):
-        return self.__current_page
-
-    def set_current_page(self, page):
-        if 0 <= page <= self.__pages:
-            self.__current_page = page
-            return f"Страница установлена на {self.__current_page}."
+    def harvest(self):
+        print(f"\n{self.name} проверяет урожай")
+        if not self._plant.tomatoes:
+            print("На кусте нет томатов")
+            return
+        if self._plant.all_are_ripe():
+            self._plant.give_away_all()
+            print(f"{self.name} собрал урожай")
         else:
-            return "Недопустимый номер страницы."
+            print("Не все томаты созрели, собирать рано")
 
-my_book = Book("Мастер и Маргарита", "Михаил Булгаков", 384)
+    @staticmethod
+    def knowledge_base():
+        print("""Справка по садоводству:
+1. Томат проходит стадии: отсутствует -> цветение -> зелёный -> красный
+2. Чтобы собрать урожай, нужно ухаживать за кустом до полной зрелости
+3. После созревания плоды можно собрать""")
 
-print(my_book.description())
-print(my_book.read(50))
-print(my_book.get_current_page())
-print(my_book.set_current_page(200))
-print(my_book.get_current_page())
-print(my_book.set_current_page(500))
+
+if __name__ == "__main__":
+    Gardener.knowledge_base()
+
+    bush = TomatoBush(3)
+    gardener = Gardener("Влад", bush)
+
+    gardener.work()
+    gardener.harvest()
+
+    gardener.work()
+    gardener.harvest()
+
+    gardener.work()
+    gardener.harvest()
+
+----------------------
+
+Вывод программы:
+
+Справка по садоводству:
+1. Томат проходит стадии: отсутствует -> цветение -> зелёный -> красный
+2. Чтобы собрать урожай, нужно ухаживать за кустом до полной зрелости
+3. После созревания плоды можно собрать
+
+Влад ухаживает за растением
+
+Куст растёт
+Томат 1 теперь цветение
+Томат 2 теперь цветение
+Томат 3 теперь цветение
+Влад закончил уход
+
+Влад проверяет урожай
+Не все томаты созрели, собирать рано
+
+Влад ухаживает за растением
+
+Куст растёт
+Томат 1 теперь зелёный
+Томат 2 теперь зелёный
+Томат 3 теперь зелёный
+Влад закончил уход
+
+Влад проверяет урожай
+Не все томаты созрели, собирать рано
+
+Влад ухаживает за растением
+
+Куст растёт
+Томат 1 теперь красный
+Томат 2 теперь красный
+Томат 3 теперь красный
+Влад закончил уход
+
+Влад проверяет урожай
+Урожай собран, куст пуст
+Влад собрал урожай
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab4.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_9/pic/samrab1.jpg)
 
 ## Выводы
-Создан класс Book с приватными атрибутами для названия, автора, количества страниц и текущей страницы, а также методами description() для вывода информации о книге, read(pages) для чтения страниц и get_current_page() / set_current_page(page) для безопасного доступа и изменения текущей страницы, демонстрируя инкапсуляцию
-
----
-
-### Задание 5
-
-``` git
-class Vehicle:
-    def move(self):
-        pass
-
-class Car(Vehicle):
-    def move(self):
-        return "Машина едет по дороге."
-
-class Boat(Vehicle):
-    def move(self):
-        return "Лодка плывёт по воде."
-
-class Plane(Vehicle):
-    def move(self):
-        return "Самолёт летит в небе."
-
-
-transport = [Car(), Boat(), Plane()]
-
-for t in transport:
-    print(t.move())
-```
-### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab5.jpg)
-
-## Выводы
-Созданы классы Vehicle, Car, Boat и Plane с методом move(), который переопределяется в каждом наследнике, демонстрируя полиморфизм: один и тот же метод выполняет разное действие для разных объектов
+Пример объединяет ключевые принципы ООП: инкапсуляцию (скрытие свойств _index и _state), композицию (взаимодействие класса Gardener с TomatoBush), и полиморфизм (единый интерфейс обращения к объектам Tomato). Также продемонстрировано применение статического метода (knowledge_base), который выполняет вспомогательную функцию, не требуя создания экземпляра класса.
 
 ---
 
 ## Общие выводы по теме
 
-ООП — это фундаментальный подход к проектированию программ, основанный на моделировании реальных объектов и их взаимодействий. Принципы инкапсуляции, наследования, полиморфизма и абстракции делают код более структурированным и читаемым, облегчают масштабирование и сопровождение, позволяют повторно использовать компоненты в новых проектах и приближают логику программы к реальному миру. Выполнение всех заданий позволило глубже понять и применить ключевые концепции ООП на практике в Python
+ООП — это мощный подход, моделирующий реальные объекты и их взаимодействие через классы и экземпляры. Использование принципов инкапсуляции, наследования, полиморфизма и абстракции делает программы на Python более структурированными и понятными, упрощает расширение и поддержку кода, а также обеспечивает повторное использование решений в разных проектах.
