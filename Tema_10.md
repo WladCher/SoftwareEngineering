@@ -19,15 +19,21 @@
 ### Задание 1
 
 ``` git
-class Car:
-    def __init__(self, make, model):#функция инициализации 
-        self.make = make #марка авто
-        self.model = model #модель авто
+from functools import lru_cache
 
-my_car = Car("Toyota", "Corolla") #создание объекта
+@lru_cache(None)
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    return fibonacci(n-1)+fibonacci(n-2)
+
+if __name__ == '__main__':
+    print(fibonacci(100))
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab1.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_10/pic/lab1.jpg)
 
 ## Выводы
 С помощью class можно создать класс и выполнить его инициализацию
@@ -37,19 +43,27 @@ my_car = Car("Toyota", "Corolla") #создание объекта
 ### Задание 2
 
 ``` git
-class Car:
-    def __init__(self, make, model): #функция инициализации 
-        self.make = make #марка авто
-        self.model = model #модель авто
-    
-    def drive(self):
-        print(f"Driving the {self.make} {self.model}")
+def check(input_func):
+    def output_func(*args):
+        name, age = args[0], args[1]
 
-my_car = Car("Toyota", "Corolla") #создание объекта
-my_car.drive()
+        if age < 0 or age > 130:
+            age = 'Недопусимый возраст'
+        input_func(name, age)
+        
+    return output_func
+
+@check
+def personal_info(name, age):
+    print(f"Name: {name} Age: {age}")
+
+if __name__ == '__main__':
+    personal_info('Владимир', 38)
+    personal_info('Александр', -5)
+    personal_info('Петр', 138, 15, 48, 2)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab2.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_10/pic/lab2.jpg)
 
 ## Выводы
 Внутри класса можно определять атрибуты и методы
@@ -59,31 +73,24 @@ my_car.drive()
 ### Задание 3
 
 ``` git
-class Car:
-    def __init__(self, make, model): #функция инициализации 
-        self.make = make #марка авто
-        self.model = model #модель авто
-    
-    def drive(self):
-        print(f"Driving the {self.make} {self.model}")
+def data(*args):
+    try:
+        for i in range(len(*args)):
+            try:
+                result = (args[0][i]*15) // 10
+                print(result)
+            except Exception as ex:
+                print(ex)
+    except Exception as ex:
+        print(ex)
+    finally:
+        print('Вся информация обработана')
 
-my_car = Car("Toyota", "Corolla") #создание объекта
-my_car.drive()
-
-class ElectricCar(Car):
-    def __init__(self, make, model, battery_capacity):
-        super().__init__(make, model)
-        self.battery_capacity = battery_capacity
-    
-    def charge(self):
-        print(f"Chatging the {self.make} {self.model} with {self.battery_capacity} kWh")
-
-my_electric_car = ElectricCar("Tesla", "Model S", 75)
-my_electric_car.drive()
-my_electric_car.charge()
+if __name__ == '__main__':
+    data([1,15,'Hello','i','try','to','crash','your','site',38,45])
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab3.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_10/pic/lab3.jpg)
 
 ## Выводы
 Классы можно наследовать, указывая родительский класс в скобках: class Class1(РодительскийКласс)
@@ -93,32 +100,21 @@ my_electric_car.charge()
 ### Задание 4
 
 ``` git
-class Car:
-    def __init__(self, make, model): #функция инициализации 
-        self._make = make #марка авто
-        self.__model = model #модель авто
-    
-    def drive(self):
-        print(f"Driving the {self.make} {self.model}")
+class NegativeValueException(Exception):
+    pass
 
-my_car = Car("Toyota", "Corolla") #создание объекта
-print(my_car._make)
-my_car.drive()
+def check_name(name):
+    if len(name) > 10:
+        raise NegativeValueException("Длина более 10 символов")
+    else:
+        print('Успешная регистрация')
 
-class ElectricCar(Car):
-    def __init__(self, make, model, battery_capacity):
-        super().__init__(make, model)
-        self.battery_capacity = battery_capacity
-    
-    def charge(self):
-        print(f"Chatging the {self.make} {self.model} with {self.battery_capacity} kWh")
-
-my_electric_car = ElectricCar("Tesla", "Model S", 75)
-my_electric_car.drive()
-my_electric_car.charge()
+if __name__ == '__main__':
+    name = '12345678910'
+    check_name(name)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab4.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_10/pic/lab4.jpg)
 
 ## Выводы
 Инкапсуляция с использованием _ или __ определяет уровень доступа к атрибуту
@@ -128,35 +124,26 @@ my_electric_car.charge()
 ### Задание 5
 
 ``` git
-class Shape:
-    def area(self):
-        pass
+class SiteChecker:
+    def __init__(self, func):
+        print('> Класс SiteChecker метод __init__ успешный запуск')
+        self.func = func
+    def __call__(self):
+        print('> Проверка перед запуском', self.func.__name__)
+        self.func()
+        print('> Проверка безопасного включения')
 
-class Rectangle(Shape):
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-    
-    def area(self):
-        return self.width * self.height
+@SiteChecker
+def site():
+    print('Усердная работа сайта')
 
-class Circle(Shape):
-    def __init__(self, radius):
-        self.radius = radius
-
-    def area(self):
-        return 3.14 * self.radius * self.radius
-
-rect = Rectangle(5, 10)
-circle = Circle(7)
-
-shapes = [rect, circle]
-
-for shape in shapes:
-    print("Площадь фигуры:", shape.area())
+if __name__ == '__main__':
+    print('>> Сайт запущен')
+    site()
+    print('>> Сайт выключен')
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/lab5.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_10/pic/lab5.jpg)
 
 ## Выводы
 Каждую строку можно выводить отдельно с помощью цикла
@@ -167,26 +154,30 @@ for shape in shapes:
 ### Задание 1
 
 ``` git
-class Book:
-    def __init__(self, title, author, pages):
-        self.title = title
-        self.author = author
-        self.pages = pages
+import time
 
-    def description(self):
-        return f"Книга '{self.title}' написана {self.author} и содержит {self.pages} страниц."
+def measure_time(func):
+    def inner(*args, **kwargs):
+        t_start = time.time()
+        result = func(*args, **kwargs)
+        t_finish = time.time()
+        duration = t_finish - t_start
+        print(f"\nПрограмма выполнилась за {duration:.4f} секунд")
+        return result
+    return inner
 
-    def is_long(self):
-        return self.pages > 300
+@measure_time
+def fibonacci():
+    fib1 = fib2 = 1
+    for i in range(2, 200):
+        fib1, fib2 = fib2, fib1 + fib2
+        print(fib2, end=' , ')
 
-
-my_book = Book("Мастер и Маргарита", "Михаил Булгаков", 384)
-
-print(my_book.description())
-print("Это длинная книга." if my_book.is_long() else "Это короткая книга.")
+if __name__ == '__main__':
+    fibonacci()
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab1.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_10/pic/samrab1.jpg)
 
 ## Выводы
 Создан класс Book с полями для названия, автора и количества страниц, а также методами description(), который выводит информацию о книге, и is_long(), проверяющим, является ли книга длинной
@@ -196,35 +187,24 @@ print("Это длинная книга." if my_book.is_long() else "Это ко
 ### Задание 2
 
 ``` git
-class Book:
-    def __init__(self, title, author, pages):
-        self.title = title
-        self.author = author
-        self.pages = pages
-        self.current_page = 0
+def read_file(filename):
+    try:
+        with open(filename, encoding='utf-8') as f:
+            content = f.read().strip()
+            if not content:
+                raise ValueError("Файл пустой")
+            print("Содержимое файла:\n", content)
+    except FileNotFoundError:
+        print("Ошибка: файл не найден.")
+    except ValueError as e:
+        print(e)
 
-    def description(self):
-        return f"Книга '{self.title}' написана {self.author} и содержит {self.pages} страниц."
-
-    def is_long(self):
-        return self.pages > 300
-
-    def read(self, pages):
-        self.current_page += pages
-        if self.current_page > self.pages:
-            self.current_page = self.pages
-        return f"Сейчас вы на странице {self.current_page}."
-
-
-my_book = Book("Мастер и Маргарита", "Михаил Булгаков", 384)
-
-print(my_book.description())
-print("Это длинная книга." if my_book.is_long() else "Это короткая книга.")
-print(my_book.read(50))
-print(my_book.read(100))
+if __name__ == '__main__':
+    read_file("not_empty.txt")
+    read_file("empty.txt")
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab2.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_10/pic/samrab2.jpg)
 
 ## Выводы
 Создан класс Book с полями для названия, автора и количества страниц, добавлен атрибут current_page для отслеживания прогресса чтения, а также методы description() для вывода информации о книге, is_long() для проверки длины книги и read(pages) для "чтения" определённого количества страниц
@@ -234,53 +214,18 @@ print(my_book.read(100))
 ### Задание 3
 
 ``` git
-class Book:
-    def __init__(self, title, author, pages):
-        self.title = title
-        self.author = author
-        self.pages = pages
-        self.current_page = 0
+def plus_two():
+    try:
+        num = float(input("Введите число: "))
+        print("Ответ:", num + 2)
+    except ValueError:
+        print("Неподходящий тип данных. Ожидалось число.")
 
-    def description(self):
-        return f"Книга '{self.title}' написана {self.author} и содержит {self.pages} страниц."
-
-    def is_long(self):
-        return self.pages > 300
-
-    def read(self, pages):
-        self.current_page += pages
-        if self.current_page > self.pages:
-            self.current_page = self.pages
-        return f"Сейчас вы на странице {self.current_page}."
-
-class AudioBook(Book):
-    def __init__(self, title, author, pages, duration_minutes):
-        super().__init__(title, author, pages)
-        self.duration_minutes = duration_minutes
-        self.current_minute = 0
-
-    def listen(self, minutes):
-        self.current_minute += minutes
-        if self.current_minute > self.duration_minutes:
-            self.current_minute = self.duration_minutes
-        return f"Вы прослушали {self.current_minute} из {self.duration_minutes} минут аудиокниги."
-
-    def description(self):
-        return f"Аудиокнига '{self.title}' автора {self.author}, длительность: {self.duration_minutes} минут."
-
-paper_book = Book("Мастер и Маргарита", "Михаил Булгаков", 384)
-audio_book = AudioBook("Мастер и Маргарита", "Михаил Булгаков", 384, 720)
-
-print(paper_book.description())
-print(paper_book.read(50))
-print(paper_book.is_long())
-
-print(audio_book.description())
-print(audio_book.listen(120))
-print(audio_book.listen(300))
+if __name__ == '__main__':
+    plus_two()
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab3.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_10/pic/samrab3.jpg)
 
 ## Выводы
 Созданы классы Book и AudioBook, где AudioBook наследует Book и добавляет поля для длительности и прогресса прослушивания. Реализованы методы description() для вывода информации, read(pages) для чтения страниц и listen(minutes) для прослушивания аудиокниги, демонстрируя наследование и расширение функционала
@@ -290,45 +235,36 @@ print(audio_book.listen(300))
 ### Задание 4
 
 ``` git
-class Book:
-    def __init__(self, title, author, pages):
-        self.__title = title
-        self.__author = author
-        self.__pages = pages
-        self.__current_page = 0
+class CountCalls:
+    # конструктор получает функцию
+    def __init__(self, func):
+        self.func = func
+        self.count = 0  # счётчик вызовов
 
-    def description(self):
-        return f"Книга '{self.__title}' написана {self.__author} и содержит {self.__pages} страниц."
+    # вызывается при каждом вызове функции
+    def __call__(self, *args, **kwargs):
+        self.count += 1
+        print(f"Функция {self.func.__name__} вызвана {self.count} раз")
+        return self.func(*args, **kwargs)
 
-    def read(self, pages):
-        if pages < 0:
-            return "Невозможно прочитать отрицательное количество страниц."
-        self.__current_page += pages
-        if self.__current_page > self.__pages:
-            self.__current_page = self.__pages
-        return f"Сейчас вы на странице {self.__current_page}."
 
-    def get_current_page(self):
-        return self.__current_page
+@CountCalls
+def say_hello(name):
+    return f"Привет {name}"
 
-    def set_current_page(self, page):
-        if 0 <= page <= self.__pages:
-            self.__current_page = page
-            return f"Страница установлена на {self.__current_page}."
-        else:
-            return "Недопустимый номер страницы."
+@CountCalls
+def square(x):
+    return x ** 2
 
-my_book = Book("Мастер и Маргарита", "Михаил Булгаков", 384)
 
-print(my_book.description())
-print(my_book.read(50))
-print(my_book.get_current_page())
-print(my_book.set_current_page(200))
-print(my_book.get_current_page())
-print(my_book.set_current_page(500))
+if __name__ == "__main__":
+    print(say_hello("Влад"))
+    print(say_hello("Екатерина"))
+    print(square(5))
+    print(square(10))
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab4.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_10/pic/samrab4.jpg)
 
 ## Выводы
 Создан класс Book с приватными атрибутами для названия, автора, количества страниц и текущей страницы, а также методами description() для вывода информации о книге, read(pages) для чтения страниц и get_current_page() / set_current_page(page) для безопасного доступа и изменения текущей страницы, демонстрируя инкапсуляцию
@@ -338,30 +274,39 @@ print(my_book.set_current_page(500))
 ### Задание 5
 
 ``` git
-class Vehicle:
-    def move(self):
-        pass
-
-class Car(Vehicle):
-    def move(self):
-        return "Машина едет по дороге."
-
-class Boat(Vehicle):
-    def move(self):
-        return "Лодка плывёт по воде."
-
-class Plane(Vehicle):
-    def move(self):
-        return "Самолёт летит в небе."
+# собственное исключение, если строка пустая
+class EmptyTextError(Exception):
+    """Ошибка: пустой текст"""
+    pass
 
 
-transport = [Car(), Boat(), Plane()]
+# первая функция — проверяет имя пользователя
+def check_name(name):
+    if not name.strip():  # если пусто или только пробелы
+        raise EmptyTextError("Имя не может быть пустым")
+    print(f"Имя принято: {name}")
 
-for t in transport:
-    print(t.move())
+
+# вторая функция — проверяет комментарий
+def check_comment(comment):
+    if not comment.strip():
+        raise EmptyTextError("Комментарий не должен быть пустым")
+    print("Комментарий сохранён:", comment)
+
+
+if __name__ == "__main__":
+    try:
+        check_name("  ")  # вызывает исключение
+    except EmptyTextError as e:
+        print("Ошибка:", e)
+
+    try:
+        check_comment("Hello world!")  # всё хорошо
+    except EmptyTextError as e:
+        print("Ошибка:", e)
 ```
 ### Результат.
-![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_8/pic/samrab5.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_10/pic/samrab5.jpg)
 
 ## Выводы
 Созданы классы Vehicle, Car, Boat и Plane с методом move(), который переопределяется в каждом наследнике, демонстрируя полиморфизм: один и тот же метод выполняет разное действие для разных объектов
