@@ -19,18 +19,9 @@
 ### Задание 1
 
 ``` git
-from functools import lru_cache
-
-@lru_cache(None)
-def fibonacci(n):
-    if n == 0:
-        return 0
-    elif n == 1:
-        return 1
-    return fibonacci(n-1)+fibonacci(n-2)
-
-if __name__ == '__main__':
-    print(fibonacci(100))
+numbers = [0,1,2,3,4,5]
+for item in numbers:
+    print(item)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_11/pic/lab1.jpg)
@@ -43,24 +34,23 @@ if __name__ == '__main__':
 ### Задание 2
 
 ``` git
-def check(input_func):
-    def output_func(*args):
-        name, age = args[0], args[1]
-
-        if age < 0 or age > 130:
-            age = 'Недопусимый возраст'
-        input_func(name, age)
-        
-    return output_func
-
-@check
-def personal_info(name, age):
-    print(f"Name: {name} Age: {age}")
+class CountDown:
+    def __init__(self, start):
+        self.count = start + 1
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        self.count -= 1
+        if self.count < 0:
+            raise StopIteration
+        return self.count
 
 if __name__ == '__main__':
-    personal_info('Владимир', 38)
-    personal_info('Александр', -5)
-    personal_info('Петр', 138, 15, 48, 2)
+    counter = CountDown(5)
+    for i in counter:
+        print(i)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_11/pic/lab2.jpg)
@@ -73,21 +63,15 @@ if __name__ == '__main__':
 ### Задание 3
 
 ``` git
-def data(*args):
-    try:
-        for i in range(len(*args)):
-            try:
-                result = (args[0][i]*15) // 10
-                print(result)
-            except Exception as ex:
-                print(ex)
-    except Exception as ex:
-        print(ex)
-    finally:
-        print('Вся информация обработана')
+a = [i ** 2 for i in range(1,5)]
 
-if __name__ == '__main__':
-    data([1,15,'Hello','i','try','to','crash','your','site',38,45])
+print('a - ', a)
+for i in a:
+    print(i)
+
+print('iter(a) - ', iter(a))
+for i in a:
+    print(i)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_11/pic/lab3.jpg)
@@ -100,18 +84,14 @@ if __name__ == '__main__':
 ### Задание 4
 
 ``` git
-class NegativeValueException(Exception):
-    pass
-
-def check_name(name):
-    if len(name) > 10:
-        raise NegativeValueException("Длина более 10 символов")
-    else:
-        print('Успешная регистрация')
-
-if __name__ == '__main__':
-    name = '12345678910'
-    check_name(name)
+b = (i**2 for i in range(1,5))
+print(b)
+print('first')
+for i in b:
+    print(i)
+print('second')
+for i in b:
+    print(i)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_11/pic/lab4.jpg)
@@ -124,23 +104,15 @@ if __name__ == '__main__':
 ### Задание 5
 
 ``` git
-class SiteChecker:
-    def __init__(self, func):
-        print('> Класс SiteChecker метод __init__ успешный запуск')
-        self.func = func
-    def __call__(self):
-        print('> Проверка перед запуском', self.func.__name__)
-        self.func()
-        print('> Проверка безопасного включения')
-
-@SiteChecker
-def site():
-    print('Усердная работа сайта')
+def countdown(count):
+    while count >= 0:
+        yield count
+        count -= 1
 
 if __name__ == '__main__':
-    print('>> Сайт запущен')
-    site()
-    print('>> Сайт выключен')
+    counter = countdown(5)
+    for i in counter:
+        print(i)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_11/pic/lab5.jpg)
@@ -154,27 +126,19 @@ if __name__ == '__main__':
 ### Задание 1
 
 ``` git
-import time
+def fib(n):
+    a, b = 1, 1
 
-def measure_time(func):
-    def inner(*args, **kwargs):
-        t_start = time.time()
-        result = func(*args, **kwargs)
-        t_finish = time.time()
-        duration = t_finish - t_start
-        print(f"\nПрограмма выполнилась за {duration:.4f} секунд")
-        return result
-    return inner
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
 
-@measure_time
-def fibonacci():
-    fib1 = fib2 = 1
-    for i in range(2, 200):
-        fib1, fib2 = fib2, fib1 + fib2
-        print(fib2, end=' , ')
 
-if __name__ == '__main__':
-    fibonacci()
+if __name__ == "__main__":
+    nums = list(fib(200))
+
+    print("1–200 числа Фибоначчи:")
+    print(*nums)
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_11/pic/samrab1.jpg)
@@ -187,24 +151,27 @@ if __name__ == '__main__':
 ### Задание 2
 
 ``` git
-def read_file(filename):
-    try:
-        with open(filename, encoding='utf-8') as f:
-            content = f.read().strip()
-            if not content:
-                raise ValueError("Файл пустой")
-            print("Содержимое файла:\n", content)
-    except FileNotFoundError:
-        print("Ошибка: файл не найден.")
-    except ValueError as e:
-        print(e)
+def fib(n):
+    a, b = 1, 1
 
-if __name__ == '__main__':
-    read_file("not_empty.txt")
-    read_file("empty.txt")
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+
+if __name__ == "__main__":
+    nums = list(fib(200))
+
+    print("1–200 числа Фибоначчи:")
+    print(*nums)
+
+    with open("fib.txt", "w") as f:
+        for number in nums:
+            f.write(str(number) + "\n")
 ```
 ### Результат.
 ![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_11/pic/samrab2.jpg)
+![Меню](https://github.com/WladCher/SoftwareEngineering/blob/Tema_11/pic/samrab2.1.jpg)
 
 ## Выводы
 Обработка исключений FileNotFoundError и ValueError предотвращает сбои при работе с файлами. Если файл пустой, программа сообщает об этом, не прерывая выполнение. Такой подход делает ввод-вывод надёжным и безопасным
